@@ -175,23 +175,23 @@ export const Terminal: React.FC = () => {
   return (
     <div className="tactile-card overflow-hidden">
       {/* Multitab Terminal Header */}
-      <div className="bg-[#F7F6F3] border-b border-[#EBEEEF] px-4 flex items-center justify-between">
+      <div className="bg-[#F7F6F3] border-b border-[#EBEEEF] px-2 md:px-4 flex items-center justify-between overflow-x-auto">
         <div className="flex">
           {[
-            { id: 'shell', icon: <TerminalIcon className="w-3 h-3" />, label: 'Parsec Shell' },
-            { id: 'logs', icon: <Activity className="w-3 h-3" />, label: 'Core Logs' },
-            { id: 'network', icon: <Wifi className="w-3 h-3" />, label: 'Network' }
+            { id: 'shell', icon: <TerminalIcon className="w-3 h-3" />, label: 'Shell', fullLabel: 'Parsec Shell' },
+            { id: 'logs', icon: <Activity className="w-3 h-3" />, label: 'Logs', fullLabel: 'Core Logs' },
+            { id: 'network', icon: <Wifi className="w-3 h-3" />, label: 'Net', fullLabel: 'Network' }
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-3 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest border-r border-[#EBEEEF] transition-colors ${activeTab === tab.id ? 'bg-white text-[#2D4769]' : 'text-[#AEACA6] hover:bg-white/50'}`}
+              className={`px-2 md:px-4 py-2 md:py-3 flex items-center gap-1 md:gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-wider md:tracking-widest border-r border-[#EBEEEF] transition-colors whitespace-nowrap ${activeTab === tab.id ? 'bg-white text-[#2D4769]' : 'text-[#AEACA6] hover:bg-white/50'}`}
             >
-              {tab.icon} {tab.label}
+              {tab.icon} <span className="hidden sm:inline">{tab.fullLabel}</span><span className="sm:hidden">{tab.label}</span>
             </button>
           ))}
         </div>
-        <div className="flex gap-4 pr-2">
+        <div className="flex gap-2 md:gap-4 pr-2 shrink-0">
           <Shield className="w-3 h-3 text-emerald-500" />
           <button
             onClick={() => handleQuickCommand('clear')}
@@ -204,21 +204,21 @@ export const Terminal: React.FC = () => {
       </div>
 
       {/* Quick Commands Bar */}
-      <div className="bg-[#F0F2F5] border-b border-[#E1E6EB] px-4 py-2 flex items-center gap-2 flex-wrap">
-        <span className="text-[9px] font-black uppercase tracking-widest text-[#8EA3B5] mr-2">Quick:</span>
+      <div className="bg-[#F0F2F5] border-b border-[#E1E6EB] px-2 md:px-4 py-2 flex items-center gap-1.5 md:gap-2 overflow-x-auto">
+        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-wider md:tracking-widest text-[#8EA3B5] mr-1 md:mr-2 shrink-0">Quick:</span>
         {['help', 'products', 'roi', 'demo', 'book'].map((cmd) => (
           <button
             key={cmd}
             onClick={() => handleQuickCommand(cmd)}
             disabled={isProcessing}
-            className="px-3 py-1 rounded-lg bg-white border border-[#E1E6EB] text-[10px] font-black uppercase tracking-wider text-[#2D4769] hover:bg-[#2D4769] hover:text-white hover:border-[#2D4769] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-2 md:px-3 py-1 rounded-lg bg-white border border-[#E1E6EB] text-[9px] md:text-[10px] font-black uppercase tracking-wider text-[#2D4769] hover:bg-[#2D4769] hover:text-white hover:border-[#2D4769] transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
           >
             {cmd}
           </button>
         ))}
       </div>
 
-      <div className="p-6 h-[350px] overflow-y-auto mono text-[13px] bg-[#FAFAFA] relative">
+      <div className="p-3 md:p-6 h-[280px] md:h-[350px] overflow-y-auto mono text-[11px] md:text-[13px] bg-[#FAFAFA] relative">
         <AnimatePresence>
           {lines.map((line, i) => (
             <motion.div
@@ -266,15 +266,16 @@ export const Terminal: React.FC = () => {
       </div>
 
       {/* System Status Bar */}
-      <div className="bg-[#EBEEEF] px-4 py-2 flex items-center justify-between text-[9px] font-mono font-bold text-[#8EA3B5]">
-        <div className="flex gap-6">
-          <span>CPU: 4.2%</span>
-          <span>MEM: 12GB/32GB</span>
+      <div className="bg-[#EBEEEF] px-2 md:px-4 py-2 flex items-center justify-between text-[8px] md:text-[9px] font-mono font-bold text-[#8EA3B5]">
+        <div className="flex gap-3 md:gap-6">
+          <span className="hidden sm:inline">CPU: 4.2%</span>
+          <span className="hidden md:inline">MEM: 12GB/32GB</span>
           <span>LAT: 12ms</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span>PARSEC_NODE_LONDON</span>
+          <span className="hidden sm:inline">PARSEC_NODE_LONDON</span>
+          <span className="sm:hidden">LONDON</span>
         </div>
       </div>
     </div>

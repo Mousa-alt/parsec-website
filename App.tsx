@@ -56,68 +56,68 @@ const App: React.FC = () => {
       <Navbar />
       <Sidebar />
 
-      <main className="doc-container pt-32 pb-40 relative">
+      <main className="doc-container pt-20 md:pt-32 pb-20 md:pb-40 relative">
         <section id="home">
           <Hero />
         </section>
-        
-        <div className="h-24" />
 
-        <section id="products" className="mb-40">
-          <motion.div 
+        <div className="h-12 md:h-24" />
+
+        <section id="products" className="mb-20 md:mb-40">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-4 mb-10 group"
+            className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-3xl font-black tracking-tight text-[#2D4769]">Architectural Library</h2>
-            <span className="text-xs font-mono text-[#8EA3B5] mt-2">DB.PRSC.v2</span>
+            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Architectural Library</h2>
+            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">DB.PRSC.v2</span>
           </motion.div>
           <ProductsGrid />
         </section>
 
-        <section id="demo" className="mb-40">
-          <motion.div 
+        <section id="demo" className="mb-20 md:mb-40">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-4 mb-10 group"
+            className="flex items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-3xl font-black tracking-tight text-[#2D4769]">System Console</h2>
+            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">System Console</h2>
           </motion.div>
           <Terminal />
         </section>
 
-        <section className="mb-40">
+        <section className="mb-20 md:mb-40">
           <Metrics />
         </section>
 
-        <section id="case-studies" className="mb-40">
-          <motion.div 
+        <section id="case-studies" className="mb-20 md:mb-40">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-4 mb-10 group"
+            className="flex items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-3xl font-black tracking-tight text-[#2D4769]">Validation Logs</h2>
+            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Validation Logs</h2>
           </motion.div>
           <CaseStudies />
         </section>
 
         {/* Testimonials section hidden for now
-        <section id="testimonials" className="mb-40">
+        <section id="testimonials" className="mb-20 md:mb-40">
           <Testimonials />
         </section>
         */}
 
-        <section id="contact" className="mb-40">
-          <motion.div 
+        <section id="contact" className="mb-20 md:mb-40">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-4 mb-10 group"
+            className="flex items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-3xl font-black tracking-tight text-[#2D4769]">Project Initialization</h2>
+            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Project Initialization</h2>
           </motion.div>
           <Contact />
         </section>
@@ -125,9 +125,9 @@ const App: React.FC = () => {
         <Footer />
       </main>
 
-      {/* Floating Badge */}
-      <div className="fixed bottom-10 right-10 z-50">
-        <motion.div 
+      {/* Floating Badge - hidden on mobile */}
+      <div className="hidden md:block fixed bottom-10 right-10 z-50">
+        <motion.div
           whileHover={{ scale: 1.05 }}
           className="bg-white border border-[#E1E6EB] p-4 rounded-2xl shadow-2xl flex items-center gap-4"
         >

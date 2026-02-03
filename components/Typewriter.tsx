@@ -43,18 +43,40 @@ export const Typewriter: React.FC = () => {
       {/* "Engineering" on its own line */}
       <div className="opacity-90 mb-2">Engineering</div>
 
-      {/* Braces with typewriter text - all on one line, no wrapping */}
+      {/* Braces with typewriter text - responsive sizing to match h1 */}
       <div className="flex items-center whitespace-nowrap">
-        <Braces size="xl">
-          <span className="text-[#2D4769] tracking-[-0.04em] whitespace-nowrap">
+        {/* Responsive braces wrapper - sizes match the h1 in Hero */}
+        <span className="inline-flex items-center select-none">
+          {/* Left braces */}
+          <span className="inline-flex items-center">
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#2D4769] font-normal leading-none" style={{ marginRight: '-0.15em' }}>
+              {'{'}
+            </span>
+            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-[#2D4769] font-semibold leading-none">
+              {'{'}
+            </span>
+          </span>
+
+          {/* Content */}
+          <span className="mx-1 text-[#2D4769] tracking-[-0.04em] whitespace-nowrap">
             {TYPEWRITER_WORDS[index].substring(0, subIndex)}
             <span
-              className={`inline-block w-[6px] h-[0.75em] bg-[#2D4769] ml-1 rounded-sm align-middle ${
+              className={`inline-block w-[4px] sm:w-[5px] md:w-[6px] h-[0.75em] bg-[#2D4769] ml-1 rounded-sm align-middle ${
                 blink ? 'opacity-80' : 'opacity-0'
               } transition-opacity duration-100`}
             />
           </span>
-        </Braces>
+
+          {/* Right braces */}
+          <span className="inline-flex items-center">
+            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-[#2D4769] font-semibold leading-none">
+              {'}'}
+            </span>
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#2D4769] font-normal leading-none" style={{ marginLeft: '-0.15em' }}>
+              {'}'}
+            </span>
+          </span>
+        </span>
       </div>
     </div>
   );

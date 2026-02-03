@@ -6,13 +6,13 @@ export const Contact: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Callout */}
-      <div className="bg-[#F0F2F5] border border-[#E1E6EB] rounded-2xl p-6 flex items-start gap-4">
-        <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-          <Mail className="w-5 h-5 text-[#2D4769]" />
+      <div className="bg-[#F0F2F5] border border-[#E1E6EB] rounded-xl md:rounded-2xl p-4 md:p-6 flex items-start gap-3 md:gap-4">
+        <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+          <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#2D4769]" />
         </div>
         <div>
-          <p className="font-black text-[#2D4769] text-lg">Start a conversation</p>
-          <p className="text-sm text-[#557089]">Our engineering team typically responds within 24 hours.</p>
+          <p className="font-black text-[#2D4769] text-base md:text-lg">Start a conversation</p>
+          <p className="text-xs md:text-sm text-[#557089]">Our engineering team typically responds within 24 hours.</p>
         </div>
       </div>
 
