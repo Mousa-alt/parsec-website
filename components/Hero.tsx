@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from './Typewriter';
 import { BRANDING } from '../constants.tsx';
@@ -7,18 +7,33 @@ import { Logo } from './Logo';
 import { Calendar, ExternalLink, ShieldCheck, Globe, Database } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
   return (
     <section className="relative">
-      {/* Cover Image - More vibrant and fun */}
+      {/* Cover Video - Living, breathing hero */}
       <div className="relative h-[280px] w-full rounded-t-[2.5rem] overflow-hidden group mb-16 shadow-2xl shadow-[#2D4769]/10">
-        <motion.img
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000"
-          alt="AI Technology"
-          className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-1000"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          onLoadedData={() => setVideoLoaded(true)}
+          onError={() => setVideoError(true)}
+          className={`absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-all duration-1000 scale-105 ${videoLoaded ? 'z-10' : 'z-0'}`}
+        >
+          {/* Local video - replace /space-bg.mp4 with your own space video */}
+          <source src="/space-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Fallback image - only shows if video fails or hasn't loaded yet */}
+        {(!videoLoaded || videoError) && (
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000"
+            alt="AI Technology"
+            className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#F0F2F5] via-[#F0F2F5]/50 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#2D4769]/10 to-transparent" />
 
@@ -35,7 +50,7 @@ export const Hero: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ rotate: -3, scale: 1.05 }}
-          className="absolute -top-32 md:-top-44 left-4 md:left-14 w-32 h-32 md:w-52 md:h-52 rounded-[2rem] md:rounded-[3.5rem] bg-white border-[3px] border-dashed border-[#C5D2E0] shadow-[0_30px_60px_-15px_rgba(45,71,105,0.25)] flex items-center justify-center cursor-pointer group hover:border-[#2D4769] transition-colors duration-500"
+          className="absolute -top-32 md:-top-44 left-4 md:left-14 w-32 h-32 md:w-52 md:h-52 rounded-[2rem] md:rounded-[3.5rem] bg-white border-[3px] border-dashed border-[#C5D2E0] shadow-[0_30px_60px_-15px_rgba(45,71,105,0.25)] flex items-center justify-center cursor-pointer group hover:border-[#2D4769] transition-colors duration-500 z-30"
         >
           <div className="group-hover:scale-110 transition-transform duration-500">
             <Logo size="lg" showIcon />
