@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
       {/* Bottom */}
       <div className="mt-12 pt-6 border-t border-[#E1E6EB] flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-[10px] font-bold uppercase tracking-wider text-[#8EA3B5]">
-          © {new Date().getFullYear()} ParSec · London & Singapore
+          © {new Date().getFullYear()} ParSec · Egypt, Saudi Arabia & UAE
         </p>
         <div className="flex items-center gap-4">
           <span className="text-xs font-bold text-[#2D4769]">100% Operational</span>

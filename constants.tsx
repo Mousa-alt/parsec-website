@@ -10,7 +10,7 @@ export const BRANDING = {
   tagline: "Engineering precision automation for high-consequence enterprise.",
   version: "v2.5.0",
   author: "Omar Mosallam",
-  locations: "London & Singapore",
+  locations: "Egypt, Saudi Arabia & UAE",
 };
 
 // ============================================
@@ -48,7 +48,7 @@ export const SIGMA_SCREENSHOTS = [
 export const PRODUCTS: Product[] = [
   {
     id: 'sigma-hq',
-    title: 'Sigma HQ — Contractor Command Center',
+    title: 'Contractor Dashboard',
     description: 'The ultimate AI operating system for high-end fit-out contractors. Automate bids, manage teams, and track margins in real-time.',
     tags: ['SaaS', 'Construction', 'AI-Powered'],
     size: 'large',
@@ -84,7 +84,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     client: 'Sigma Contractors',
     industry: 'Commercial Fit-out',
     result: 'Reduced bidding overhead by 80%',
-    outcome: 'Implemented Sigma HQ to stabilize a E£1000M annual pipeline.'
+    outcome: 'Implemented Contractor Dashboard to stabilize a E£1000M annual pipeline.'
   },
   {
     client: 'Prime Dental',

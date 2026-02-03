@@ -40,7 +40,7 @@ export const Contact: React.FC = () => {
           <div className="group">
             <label className="text-[10px] font-black uppercase text-[#8EA3B5] tracking-widest block mb-2">Inquiry Type</label>
             <select className="w-full bg-white border border-[#E1E6EB] rounded-xl px-4 py-3 outline-none focus:border-[#2D4769] transition-colors text-[#2D4769] appearance-none cursor-pointer">
-              <option>Sigma HQ Implementation</option>
+              <option>Contractor Dashboard</option>
               <option>Voice Agent Deployment</option>
               <option>General Architecture</option>
             </select>
