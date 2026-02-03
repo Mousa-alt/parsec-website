@@ -1,0 +1,282 @@
+
+import React, { useState, useRef, useEffect } from 'react';
+import { Copy, Terminal as TerminalIcon, Shield, Activity, Wifi } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+type LineType = 'sys' | 'user' | 'alert' | 'success' | 'info';
+
+interface TerminalLine {
+  type: LineType;
+  text: string;
+}
+
+// Command responses for the interactive terminal
+const COMMANDS: Record<string, () => TerminalLine[]> = {
+  help: () => [
+    { type: 'info', text: '┌─────────────────────────────────────────────────┐' },
+    { type: 'info', text: '│  PARSEC COMMAND INTERFACE v2.4.1                │' },
+    { type: 'info', text: '├─────────────────────────────────────────────────┤' },
+    { type: 'sys', text: '│  help      → Display this help menu             │' },
+    { type: 'sys', text: '│  status    → System health & metrics            │' },
+    { type: 'sys', text: '│  products  → View our AI solutions              │' },
+    { type: 'sys', text: '│  roi       → Calculate automation ROI           │' },
+    { type: 'sys', text: '│  demo      → Experience AI capability           │' },
+    { type: 'sys', text: '│  book      → Schedule a strategy call           │' },
+    { type: 'sys', text: '│  clear     → Clear terminal output              │' },
+    { type: 'info', text: '└─────────────────────────────────────────────────┘' },
+  ],
+  status: () => [
+    { type: 'success', text: '✓ PARSEC CORE STATUS' },
+    { type: 'sys', text: '──────────────────────────────────' },
+    { type: 'sys', text: '  Uptime:        99.97% (365 days)' },
+    { type: 'sys', text: '  Active Nodes:  47 worldwide' },
+    { type: 'sys', text: '  AI Models:     GPT-4, Claude, Custom LLMs' },
+    { type: 'sys', text: '  Latency:       12ms avg response' },
+    { type: 'sys', text: '  Security:      SOC2 Type II Compliant' },
+    { type: 'success', text: '  Status:        ALL SYSTEMS OPERATIONAL' },
+  ],
+  products: () => [
+    { type: 'info', text: '╔═══════════════════════════════════════════════╗' },
+    { type: 'info', text: '║          PARSEC PRODUCT ECOSYSTEM             ║' },
+    { type: 'info', text: '╠═══════════════════════════════════════════════╣' },
+    { type: 'success', text: '║  [01] SIGMA HQ                                ║' },
+    { type: 'sys', text: '║       AI operating system for fit-out         ║' },
+    { type: 'sys', text: '║       contractors. Automate bids, manage      ║' },
+    { type: 'sys', text: '║       teams, track margins in real-time.      ║' },
+    { type: 'info', text: '║───────────────────────────────────────────────║' },
+    { type: 'success', text: '║  [02] VOICE AGENTS                            ║' },
+    { type: 'sys', text: '║       24/7 AI receptionists for dental        ║' },
+    { type: 'sys', text: '║       clinics. Never miss a call again.       ║' },
+    { type: 'info', text: '║───────────────────────────────────────────────║' },
+    { type: 'success', text: '║  [03] AI ASSISTANTS                           ║' },
+    { type: 'sys', text: '║       Personal AI that learns your workflow   ║' },
+    { type: 'sys', text: '║       and multiplies your productivity.       ║' },
+    { type: 'info', text: '╚═══════════════════════════════════════════════╝' },
+  ],
+  roi: () => [
+    { type: 'info', text: '📊 PARSEC ROI CALCULATOR' },
+    { type: 'sys', text: '──────────────────────────────────' },
+    { type: 'sys', text: '  Industry Average Results:' },
+    { type: 'sys', text: '' },
+    { type: 'success', text: '  ▸ Time Saved:     40+ hours/week' },
+    { type: 'success', text: '  ▸ Cost Reduction: 60% operational' },
+    { type: 'success', text: '  ▸ Revenue Boost:  23% avg increase' },
+    { type: 'success', text: '  ▸ ROI Timeline:   4-8 weeks' },
+    { type: 'sys', text: '' },
+    { type: 'alert', text: '  → Type "book" for personalized ROI analysis' },
+  ],
+  demo: () => [
+    { type: 'info', text: '🤖 INITIATING AI DEMONSTRATION...' },
+    { type: 'sys', text: '' },
+    { type: 'sys', text: '  User: "Schedule a meeting with client X"' },
+    { type: 'success', text: '  AI:   ✓ Checking calendar availability...' },
+    { type: 'success', text: '        ✓ Found 3 open slots this week' },
+    { type: 'success', text: '        ✓ Sent invitation to client@xyz.com' },
+    { type: 'success', text: '        ✓ Added to CRM with context notes' },
+    { type: 'sys', text: '' },
+    { type: 'info', text: '  ⚡ Task completed in 2.3 seconds' },
+    { type: 'sys', text: '     Manual equivalent: ~15 minutes' },
+  ],
+  book: () => [
+    { type: 'success', text: '📅 STRATEGY SESSION BOOKING' },
+    { type: 'sys', text: '──────────────────────────────────' },
+    { type: 'sys', text: '  What you\'ll get:' },
+    { type: 'sys', text: '' },
+    { type: 'info', text: '  ✦ 30-min discovery call' },
+    { type: 'info', text: '  ✦ Custom automation roadmap' },
+    { type: 'info', text: '  ✦ ROI projection for your business' },
+    { type: 'info', text: '  ✦ Live product demonstration' },
+    { type: 'sys', text: '' },
+    { type: 'alert', text: '  → Click "Execute System Brief" above to book' },
+  ],
+};
+
+export const Terminal: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'shell' | 'logs' | 'network'>('shell');
+  const [lines, setLines] = useState<TerminalLine[]>([
+    { type: 'sys', text: '// Parsec Core Network — Authorized Access Only' },
+    { type: 'sys', text: '// System Status: [STABLE]' },
+    { type: 'success', text: '✓ Connection established to PARSEC_NODE_01' },
+    { type: 'sys', text: '' },
+    { type: 'info', text: '  Type "help" to see available commands' },
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Only scroll to end of terminal AFTER user has interacted (not on initial mount)
+  useEffect(() => {
+    if (hasInteracted) {
+      terminalEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [lines, hasInteracted]);
+
+  const processCommand = (cmd: string) => {
+    const normalizedCmd = cmd.toLowerCase().trim();
+
+    if (normalizedCmd === 'clear') {
+      setLines([
+        { type: 'sys', text: '// Terminal cleared' },
+        { type: 'info', text: '  Type "help" to see available commands' },
+      ]);
+      return;
+    }
+
+    const commandFn = COMMANDS[normalizedCmd];
+    if (commandFn) {
+      setIsProcessing(true);
+      // Simulate processing delay
+      setTimeout(() => {
+        setLines(prev => [...prev, { type: 'sys', text: '' }, ...commandFn()]);
+        setIsProcessing(false);
+      }, 300 + Math.random() * 400);
+    } else {
+      setTimeout(() => {
+        setLines(prev => [
+          ...prev,
+          { type: 'alert', text: `  Command "${cmd}" not recognized.` },
+          { type: 'sys', text: '  Type "help" for available commands.' },
+        ]);
+      }, 200);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && inputValue.trim() && !isProcessing) {
+      setHasInteracted(true);
+      const cmd = inputValue.trim();
+      setLines(prev => [...prev, { type: 'user', text: `$ ${cmd}` }]);
+      setInputValue('');
+      processCommand(cmd);
+    }
+  };
+
+  const handleQuickCommand = (cmd: string) => {
+    if (!isProcessing) {
+      setHasInteracted(true);
+      setLines(prev => [...prev, { type: 'user', text: `$ ${cmd}` }]);
+      processCommand(cmd);
+      inputRef.current?.focus();
+    }
+  };
+
+  const getLineColor = (type: LineType) => {
+    switch (type) {
+      case 'user': return 'text-[#2D4769] font-black';
+      case 'alert': return 'text-amber-600 font-bold';
+      case 'success': return 'text-emerald-600 font-semibold';
+      case 'info': return 'text-sky-600 font-semibold';
+      default: return 'text-[#787774]';
+    }
+  };
+
+  return (
+    <div className="tactile-card overflow-hidden">
+      {/* Multitab Terminal Header */}
+      <div className="bg-[#F7F6F3] border-b border-[#EBEEEF] px-4 flex items-center justify-between">
+        <div className="flex">
+          {[
+            { id: 'shell', icon: <TerminalIcon className="w-3 h-3" />, label: 'Parsec Shell' },
+            { id: 'logs', icon: <Activity className="w-3 h-3" />, label: 'Core Logs' },
+            { id: 'network', icon: <Wifi className="w-3 h-3" />, label: 'Network' }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`px-4 py-3 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest border-r border-[#EBEEEF] transition-colors ${activeTab === tab.id ? 'bg-white text-[#2D4769]' : 'text-[#AEACA6] hover:bg-white/50'}`}
+            >
+              {tab.icon} {tab.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex gap-4 pr-2">
+          <Shield className="w-3 h-3 text-emerald-500" />
+          <button
+            onClick={() => handleQuickCommand('clear')}
+            className="text-[#AEACA6] hover:text-[#37352F] transition-colors"
+            title="Clear terminal"
+          >
+            <Copy className="w-3 h-3" />
+          </button>
+        </div>
+      </div>
+
+      {/* Quick Commands Bar */}
+      <div className="bg-[#F0F2F5] border-b border-[#E1E6EB] px-4 py-2 flex items-center gap-2 flex-wrap">
+        <span className="text-[9px] font-black uppercase tracking-widest text-[#8EA3B5] mr-2">Quick:</span>
+        {['help', 'products', 'roi', 'demo', 'book'].map((cmd) => (
+          <button
+            key={cmd}
+            onClick={() => handleQuickCommand(cmd)}
+            disabled={isProcessing}
+            className="px-3 py-1 rounded-lg bg-white border border-[#E1E6EB] text-[10px] font-black uppercase tracking-wider text-[#2D4769] hover:bg-[#2D4769] hover:text-white hover:border-[#2D4769] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {cmd}
+          </button>
+        ))}
+      </div>
+
+      <div className="p-6 h-[350px] overflow-y-auto mono text-[13px] bg-[#FAFAFA] relative">
+        <AnimatePresence>
+          {lines.map((line, i) => (
+            <motion.div
+              key={`${i}-${line.text}`}
+              initial={{ opacity: 0, x: -5 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.15 }}
+              className={`mb-1 flex gap-4 ${getLineColor(line.type)}`}
+            >
+              <span className="opacity-30 select-none w-6 text-right shrink-0">{(i+1).toString().padStart(2, '0')}</span>
+              <span className="whitespace-pre">{line.text}</span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {isProcessing && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex items-center gap-2 mt-2 text-[#8EA3B5]"
+          >
+            <div className="flex gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2D4769] animate-bounce" style={{ animationDelay: '0ms' }} />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2D4769] animate-bounce" style={{ animationDelay: '150ms' }} />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2D4769] animate-bounce" style={{ animationDelay: '300ms' }} />
+            </div>
+            <span className="text-xs">Processing...</span>
+          </motion.div>
+        )}
+
+        <div className="flex items-center gap-3 mt-4 pt-4 border-t border-[#EBEEEF]">
+          <span className="text-[#2D4769] font-bold">$</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={isProcessing}
+            className="bg-transparent border-none outline-none text-[#37352F] w-full placeholder:text-[#C5D2E0] font-bold disabled:cursor-not-allowed"
+            placeholder="Type a command or click Quick buttons above..."
+          />
+        </div>
+        <div ref={terminalEndRef} />
+      </div>
+
+      {/* System Status Bar */}
+      <div className="bg-[#EBEEEF] px-4 py-2 flex items-center justify-between text-[9px] font-mono font-bold text-[#8EA3B5]">
+        <div className="flex gap-6">
+          <span>CPU: 4.2%</span>
+          <span>MEM: 12GB/32GB</span>
+          <span>LAT: 12ms</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span>PARSEC_NODE_LONDON</span>
+        </div>
+      </div>
+    </div>
+  );
+};
