@@ -24,6 +24,8 @@ const COMMANDS: Record<string, () => TerminalLine[]> = {
     { type: 'sys', text: '│  demo      → Experience AI capability           │' },
     { type: 'sys', text: '│  book      → Schedule a strategy call           │' },
     { type: 'sys', text: '│  clear     → Clear terminal output              │' },
+    { type: 'info', text: '├─────────────────────────────────────────────────┤' },
+    { type: 'success', text: '│  Or ask any question — AI-powered responses!   │' },
     { type: 'info', text: '└─────────────────────────────────────────────────┘' },
   ],
   status: () => [
@@ -99,11 +101,12 @@ export const Terminal: React.FC = () => {
     { type: 'sys', text: '// System Status: [STABLE]' },
     { type: 'success', text: '✓ Connection established to PARSEC_NODE_01' },
     { type: 'sys', text: '' },
-    { type: 'info', text: '  Type "help" to see available commands' },
+    { type: 'info', text: '  Type "help" or ask any question about ParSec' },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [chatHistory, setChatHistory] = useState<{ role: string; content: string }[]>([]);
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { registerExecutor } = useTerminal();
@@ -147,13 +150,44 @@ export const Terminal: React.FC = () => {
         setIsProcessing(false);
       }, 300 + Math.random() * 400);
     } else {
-      setTimeout(() => {
-        setLines(prev => [
-          ...prev,
-          { type: 'alert', text: `  Command "${cmd}" not recognized.` },
-          { type: 'sys', text: '  Type "help" for available commands.' },
-        ]);
-      }, 200);
+      // Not a built-in command — send to AI
+      setIsProcessing(true);
+      setLines(prev => [...prev, { type: 'sys', text: '  ⚡ Querying ParSec AI...' }]);
+
+      fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: cmd, history: chatHistory }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.reply) {
+            const replyLines: TerminalLine[] = data.reply
+              .split('\n')
+              .map((line: string) => ({ type: 'info' as LineType, text: `  ${line}` }));
+            setLines(prev => [...prev.slice(0, -1), ...replyLines]);
+            setChatHistory(prev => [
+              ...prev,
+              { role: 'user', content: cmd },
+              { role: 'assistant', content: data.reply },
+            ]);
+          } else {
+            setLines(prev => [
+              ...prev.slice(0, -1),
+              { type: 'alert', text: '  AI service unavailable. Try a built-in command.' },
+              { type: 'sys', text: '  Type "help" for available commands.' },
+            ]);
+          }
+          setIsProcessing(false);
+        })
+        .catch(() => {
+          setLines(prev => [
+            ...prev.slice(0, -1),
+            { type: 'alert', text: '  Connection error. Try a built-in command.' },
+            { type: 'sys', text: '  Type "help" for available commands.' },
+          ]);
+          setIsProcessing(false);
+        });
     }
   };
 
@@ -232,7 +266,7 @@ export const Terminal: React.FC = () => {
         ))}
       </div>
 
-      <div className="p-3 md:p-6 h-[280px] md:h-[350px] overflow-y-auto mono text-[11px] md:text-[13px] bg-[#FAFAFA] relative">
+      <div className="p-3 md:p-6 h-[400px] md:h-[500px] overflow-y-auto mono text-[11px] md:text-[13px] bg-[#FAFAFA] relative">
         <AnimatePresence>
           {lines.map((line, i) => (
             <motion.div
