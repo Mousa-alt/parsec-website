@@ -5,10 +5,12 @@ import { Typewriter } from './Typewriter';
 import { BRANDING } from '../constants.tsx';
 import { Logo } from './Logo';
 import { Calendar, ExternalLink, ShieldCheck, Globe, Database } from 'lucide-react';
+import { useTerminal } from '../TerminalContext';
 
 export const Hero: React.FC = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const { executeCommand } = useTerminal();
 
   return (
     <section className="relative">
@@ -38,7 +40,10 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#2D4769]/10 to-transparent" />
 
         <div className="absolute bottom-6 right-8 flex gap-3 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
-          <button className="bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-[0.15em] border border-white/50 hover:bg-white shadow-xl transition-all text-[#2D4769]">
+          <button
+            onClick={() => executeCommand('demo')}
+            className="bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-[0.15em] border border-white/50 hover:bg-white shadow-xl transition-all text-[#2D4769]"
+          >
             <ExternalLink className="w-3.5 h-3.5 inline mr-2" /> View Demo
           </button>
         </div>
@@ -131,7 +136,10 @@ export const Hero: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-8 items-start sm:items-center pb-6 md:pb-10">
-              <button className="w-full sm:w-auto bg-[#2D4769] hover:bg-[#1D2F45] text-white px-6 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.15em] md:tracking-[0.25em] text-xs md:text-sm shadow-[0_20px_40px_-10px_rgba(45,71,105,0.4)] transition-all hover:-translate-y-1 active:scale-95">
+              <button
+                onClick={() => executeCommand('status')}
+                className="w-full sm:w-auto bg-[#2D4769] hover:bg-[#1D2F45] text-white px-6 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.15em] md:tracking-[0.25em] text-xs md:text-sm shadow-[0_20px_40px_-10px_rgba(45,71,105,0.4)] transition-all hover:-translate-y-1 active:scale-95"
+              >
                 Execute System Brief
               </button>
               <div className="hidden sm:block w-px h-10 bg-[#E1E6EB]" />

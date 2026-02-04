@@ -11,6 +11,7 @@ import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Logo } from './components/Logo';
+import { TerminalProvider } from './TerminalContext';
 import { Home, Layers, Terminal as TermIcon, Award, MessageCircle } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
@@ -50,9 +51,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
+    <TerminalProvider>
     <div className="relative min-h-screen font-['Poppins']">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#2D4769] z-[60] origin-left" style={{ scaleX }} />
-      
+
       <Navbar />
       <Sidebar />
 
@@ -141,6 +143,7 @@ const App: React.FC = () => {
         </motion.div>
       </div>
     </div>
+    </TerminalProvider>
   );
 };
 

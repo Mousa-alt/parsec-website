@@ -1,7 +1,8 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Copy, Terminal as TerminalIcon, Shield, Activity, Wifi } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTerminal } from '../TerminalContext';
 
 type LineType = 'sys' | 'user' | 'alert' | 'success' | 'info';
 
@@ -105,6 +106,7 @@ export const Terminal: React.FC = () => {
   const [hasInteracted, setHasInteracted] = useState(false);
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { registerExecutor } = useTerminal();
 
   // Only scroll to end of terminal AFTER user has interacted (not on initial mount)
   useEffect(() => {
@@ -112,6 +114,18 @@ export const Terminal: React.FC = () => {
       terminalEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [lines, hasInteracted]);
+
+  // Register external command executor for cross-component use
+  const externalExecute = useCallback((cmd: string) => {
+    setHasInteracted(true);
+    setLines(prev => [...prev, { type: 'user', text: `$ ${cmd}` }]);
+    processCommand(cmd);
+    inputRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    registerExecutor(externalExecute);
+  }, [registerExecutor, externalExecute]);
 
   const processCommand = (cmd: string) => {
     const normalizedCmd = cmd.toLowerCase().trim();

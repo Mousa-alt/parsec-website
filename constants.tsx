@@ -11,6 +11,16 @@ export const BRANDING = {
   version: "v2.5.0",
   author: "Omar Mosallam",
   locations: "Egypt, Saudi Arabia & UAE",
+  lastEdited: "Just now",
+};
+
+// ============================================
+// WHATSAPP - Contact configuration
+// ============================================
+export const WHATSAPP = {
+  number: "201288181123",
+  defaultMessage: "Hi, I'm interested in learning more about ParSec's automation solutions.",
+  portfolioUrl: "https://omarmosallam.parsec.solutions",
 };
 
 // ============================================

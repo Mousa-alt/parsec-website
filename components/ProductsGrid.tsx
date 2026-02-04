@@ -1,15 +1,17 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PRODUCTS, SIGMA_SCREENSHOTS } from '../constants.tsx';
+import { PRODUCTS, SIGMA_SCREENSHOTS, WHATSAPP } from '../constants.tsx';
 import { Product } from '../types';
 import { Logo } from './Logo';
 import { ArrowRight, Play, Cpu, Sparkles } from 'lucide-react';
+import { useTerminal } from '../TerminalContext';
 
 // Sigma HQ - Featured product with screenshot thumbnails
 const SigmaHQShowcase: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const sigmaProduct = PRODUCTS.find(p => p.id === 'sigma-hq');
+  const { executeCommand } = useTerminal();
 
   return (
     <div className="tactile-card overflow-hidden group">
@@ -78,9 +80,12 @@ const SigmaHQShowcase: React.FC = () => {
               </span>
             ))}
           </div>
-          <div className="flex items-center gap-2 text-sm font-black text-[#2D4769] uppercase tracking-wider cursor-pointer group-hover:translate-x-1 transition-transform">
+          <button
+            onClick={() => executeCommand('products')}
+            className="flex items-center gap-2 text-sm font-black text-[#2D4769] uppercase tracking-wider cursor-pointer hover:translate-x-1 transition-transform"
+          >
             Explore <ArrowRight className="w-4 h-4" />
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -88,9 +93,14 @@ const SigmaHQShowcase: React.FC = () => {
 };
 
 // Product Card for Voice Agents and Personal AI
-const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+const ProductCard: React.FC<{ product: Product; terminalCmd: string }> = ({ product, terminalCmd }) => {
+  const { executeCommand } = useTerminal();
+
   return (
-    <div className="tactile-card group cursor-pointer h-full flex flex-col overflow-hidden">
+    <div
+      onClick={() => executeCommand(terminalCmd)}
+      className="tactile-card group cursor-pointer h-full flex flex-col overflow-hidden"
+    >
       {/* Image */}
       <div className="aspect-video bg-[#F0F2F5] border-b border-[#E1E6EB] overflow-hidden">
         <img
@@ -136,6 +146,16 @@ export const ProductsGrid: React.FC = () => {
   // Filter out Sigma HQ since we're showing it separately
   const otherProducts = PRODUCTS.filter(p => p.id !== 'sigma-hq');
 
+  const terminalCmdMap: Record<string, string> = {
+    'voice-agents': 'products',
+    'ai-assistants': 'products',
+  };
+
+  const handleContactStudio = () => {
+    const msg = encodeURIComponent("Hi, I'm interested in discussing a custom architecture project with ParSec.");
+    window.open(`https://wa.me/${WHATSAPP.number}?text=${msg}`, '_blank');
+  };
+
   return (
     <div className="space-y-10">
       {/* Sigma HQ - Featured with screenshots */}
@@ -144,7 +164,11 @@ export const ProductsGrid: React.FC = () => {
       {/* Other Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {otherProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            terminalCmd={terminalCmdMap[product.id] || 'products'}
+          />
         ))}
 
         {/* Request Architecture Card - DASHED BORDER, LARGER ICON */}
@@ -156,7 +180,10 @@ export const ProductsGrid: React.FC = () => {
           <p className="text-sm text-[#8EA3B5] max-w-[260px] font-bold leading-relaxed mb-8">
             Modular engineering for proprietary constraints and custom requirements.
           </p>
-          <button className="text-sm font-black uppercase tracking-[0.2em] text-white bg-[#2D4769] hover:bg-[#1D2F45] px-8 py-3 rounded-xl shadow-lg shadow-[#2D4769]/20 transition-all hover:-translate-y-0.5 active:scale-95">
+          <button
+            onClick={handleContactStudio}
+            className="text-sm font-black uppercase tracking-[0.2em] text-white bg-[#2D4769] hover:bg-[#1D2F45] px-8 py-3 rounded-xl shadow-lg shadow-[#2D4769]/20 transition-all hover:-translate-y-0.5 active:scale-95"
+          >
             Contact Studio
           </button>
         </div>

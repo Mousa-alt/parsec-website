@@ -34,7 +34,10 @@ export const CaseStudies: React.FC = () => {
         </div>
       ))}
 
-      <button className="flex items-center gap-2 text-[11px] text-[#8EA3B5] hover:text-[#2D4769] py-2 px-2 transition-colors font-black uppercase tracking-widest">
+      <button
+        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+        className="flex items-center gap-2 text-[11px] text-[#8EA3B5] hover:text-[#2D4769] py-2 px-2 transition-colors font-black uppercase tracking-widest"
+      >
         <ArrowRight className="w-4 h-4" /> View full archives
       </button>
     </div>
