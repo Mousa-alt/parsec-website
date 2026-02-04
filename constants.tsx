@@ -48,7 +48,7 @@ export const SIGMA_SCREENSHOTS = [
 export const PRODUCTS: Product[] = [
   {
     id: 'sigma-hq',
-    title: 'Contractor Dashboard',
+    title: 'Contractor Command Center',
     description: 'The ultimate AI operating system for high-end fit-out contractors. Automate bids, manage teams, and track margins in real-time.',
     tags: ['SaaS', 'Construction', 'AI-Powered'],
     size: 'large',
