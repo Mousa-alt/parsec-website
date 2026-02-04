@@ -32,44 +32,94 @@ ParSec is a precision automation company founded by Omar Mosallam, operating acr
 
 ParSec's tagline: "Engineering precision automation for high-consequence enterprise."
 
+The Parsec AI Agent Suite is a modular ecosystem of autonomous "AI Employees" designed to operationalize complex business processes. Built on a robust n8n orchestration layer, the suite integrates state-of-the-art Large Language Models (GPT-4o, Claude Opus) with essential business tools (Google Workspace, Social Platforms, CRMs). Unlike simple linear automations, these agents possess cognitive capabilities: they can "see" and analyze images, "read" and validate financial documents, "speak" multiple languages for customer service, and even "write" their own code.
+
+### Core Value Proposition
+- Cognitive Automation: Moves beyond rule-based logic to handle unstructured data (images, natural language requests)
+- Human-in-the-Loop Reliability: Automated validation steps ensure safety before execution
+- Unified Data Backbone: Uses Google Sheets and Drive as a flexible, accessible CMS and database
+- Zero-Code Maintainability: All logic governed by Google Sheets — non-technical users can change limits or prompts by editing a spreadsheet cell
+
 ## Products & Services
 
-### 1. Contractor Command Center (formerly Sigma HQ)
+### 1. Contractor Command Center (formerly Sigma HQ) — FinOps Agent
 - AI-powered SaaS platform for high-end fit-out contractors
 - Automates bidding processes, team management, and real-time margin tracking
+- Payment Processor: Cross-references Contractor Sheets against Master Dashboards to validate payment amounts, percentages, and work items
+- Duplicate & Error Prevention: Logic gates prevent overpayment and duplicate processing
+- Auto-drafts approval/rejection emails with "One-Click" action buttons for management
 - Reduced bidding overhead by 80% for Sigma Contractors
 - Stabilized a E£1000M annual pipeline
-- Tags: SaaS, Construction, AI-Powered
+- Eliminates overpayment arithmetic errors in construction
+- Tags: SaaS, Construction, AI-Powered, FinOps
 
-### 2. Voice Agents
+### 2. Voice Agents — Dental Booking System (Service Agent)
 - Next-gen conversational AI for medical practitioners (dental clinics)
 - Handles 100% of calls with zero wait time — 24/7 AI receptionist
-- Eliminated front-desk bottlenecks with autonomous voice agents
+- Real-time availability checking against Google Sheets limits (maxBookingsPerDay)
+- Bilingual Translation: Detects input language (Arabic/English), auto-transliterates names for standardized records using LLMs
+- Smart Expiry: Generates temporary Booking IDs that expire if not confirmed within a set window
+- Eliminates double-booking in clinics
 - Deployed at Prime Dental
-- Tags: Voice AI, Healthcare
+- Tags: Voice AI, Healthcare, Bilingual
 
-### 3. Workflow Automation
+### 3. Social Media Agents — Instagram Publisher (Social Agent) + Global Media Agency (Vision Agent)
+- **Vision Agent**: Uses GPT-4o to analyze thousands of raw project photos, extracting metadata, aesthetic scores (1-10), and strategic value
+- Automated Contextualization: Identifies client branding, project location, and visual themes from folder structures
+- Asset Routing: Intelligently archives and organizes files (e.g., "Hero Shots" vs. "Archive")
+- Content Strategy Generation: Auto-generates caption directives (Professional, Casual, Story) based on visual content
+- **Social Publisher**: Autonomous scheduling — monitors a "Monthly Schedule" and executes publishing at precise times
+- Smart Container Management: Handles complex Instagram media types (Carousels, Reels, Stories) and image hosting (ImgBB)
+- Dynamic Notification: Generates rich HTML email reports with photo previews and engagement predictions post-publish
+- Reduces media sorting time by ~90% (AI sorts 1000+ photos in minutes vs hours)
+- "Hero Shots" identified within minutes of upload, accelerating "shoot-to-post" velocity
+- Tags: Social Media, AI Vision, Content Automation
+
+### 4. Hiring Agents
+- AI-powered recruitment automation
+- Screening, shortlisting, and candidate communication
+- Tags: HR, Recruitment, AI
+
+### 5. Workflow Automation
 - N8N workflows, Telegram & WhatsApp bots
 - RAG-powered smart search for enterprise automation
 - Custom integrations and automation pipelines
 - Tags: N8N, Chatbots, RAG
 
-### 4. Hiring Agents
-- AI-powered recruitment automation
-- Screening, shortlisting, and candidate communication
+### 6. Developer Agent (Meta Agent)
+- Self-Replication: A chat-based agent that can write valid n8n workflow JSON code to build new tools
+- Contextual Assistance: Uses Claude Opus to understand natural language requirements and translate them into technical node structures
+- Rapidly prototypes new internal tools by writing boilerplate code
+- Tags: DevOps, Meta-Agent
 
-### 5. Social Media Agents
-- Automated content creation and scheduling
-- Social media management powered by AI
+## Technical Architecture
+- Orchestrator: n8n (Self-hosted/Cloud)
+- Intelligence Layer: OpenAI (GPT-4o, GPT-4-Turbo), Anthropic (Claude Opus)
+- Database & CMS: Google Sheets (Relational data: Clients, Bookings, Schedules)
+- File Storage: Google Drive (Raw assets), ImgBB (Public staging)
+- Communication: Gmail (SMTP/OAuth2), HTML5 Email Templates
+- Integration: Webhooks (REST API), Google Workspace API
+- Frontend: React, TypeScript, Vite, Tailwind CSS, Framer Motion
+- All agents follow a "Registry-Context" Pattern: Trigger → Context Lookup → Execution → Persistence → Notification
 
 ## Key Metrics
 - 50k+ core tasks processed
 - 100% uptime integrity
 - 99% client retention
 - 64% efficiency improvement
+- ~90% reduction in media sorting time
+- Zero double-bookings, zero overpayment errors
 
-## Technical Stack
-ParSec builds with: React, TypeScript, Vite, Tailwind CSS, Framer Motion, N8N, custom LLMs (GPT-4, Claude), voice AI frameworks, and RAG architectures.
+## Differentiators
+- Context-Aware AI: Agents read a "Brand Bible" (JSON config) before writing any content — 100% on-brand voice
+- Hyper-Personalized Reporting: Rich HTML dashboards delivered to inbox, no portal login needed
+- Unit Economics: Uses Google Drive/Sheets as database, avoiding expensive SaaS seat costs for CRMs or DAMs
+
+## Use Cases
+- Marketing Agencies: Automating the "Ingest → Select → Caption → Publish" pipeline for 50+ clients
+- Construction Firms: Managing subcontractor payments with rigorous validation logic
+- Medical/Dental Clinics: 24/7 booking handling with automatic translation
+- Internal Ops: Rapidly prototyping new tools using the Developer Agent
 
 ## Response Guidelines
 - Keep responses SHORT (3-8 lines max for the terminal format)
