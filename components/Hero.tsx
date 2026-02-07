@@ -125,7 +125,7 @@ export const Hero: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ rotate: -3, scale: 1.05 }}
-          className="absolute -top-32 md:-top-44 left-4 md:left-14 w-32 h-32 md:w-52 md:h-52 rounded-[2rem] md:rounded-[3.5rem] bg-white border-[3px] border-dashed border-[#C5D2E0] shadow-[0_30px_60px_-15px_rgba(45,71,105,0.25)] flex items-center justify-center cursor-pointer group hover:border-[#2D4769] transition-colors duration-500 z-30"
+          className="absolute -top-32 md:-top-44 left-4 md:left-14 w-32 h-32 md:w-52 md:h-52 aspect-square shrink-0 rounded-[2rem] md:rounded-[3.5rem] bg-white border-[3px] border-dashed border-[#C5D2E0] shadow-[0_30px_60px_-15px_rgba(45,71,105,0.25)] flex items-center justify-center cursor-pointer group hover:border-[#2D4769] transition-colors duration-500 z-30"
         >
           <div className="group-hover:scale-110 transition-transform duration-500">
             <Logo size="2xl" showIcon />
