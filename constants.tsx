@@ -36,10 +36,13 @@ export const SERVICES: ServiceCategory[] = [
     color: '#2D4769',
     items: [
       { name: 'Voice Agents', desc: '24/7 call handling & booking', icon: 'phone' },
+      { name: 'Personal AI Assistants', desc: 'Email, calendar & task management', icon: 'user' },
       { name: 'Hiring Agents', desc: 'Screening & candidate outreach', icon: 'users' },
       { name: 'Social Media Agents', desc: 'Content scheduling & publishing', icon: 'share' },
+      { name: 'Customer Support Bots', desc: 'WhatsApp & Telegram automation', icon: 'message-circle' },
       { name: 'Payment Processing', desc: 'Invoice validation & approvals', icon: 'credit-card' },
-      { name: 'Workflow Automation', desc: 'N8N, bots, integrations', icon: 'zap' },
+      { name: 'Data Entry Automation', desc: 'Document parsing & organization', icon: 'file-text' },
+      { name: 'Workflow Automation', desc: 'N8N, Zapier & custom pipelines', icon: 'zap' },
     ]
   },
   {
@@ -52,6 +55,9 @@ export const SERVICES: ServiceCategory[] = [
       { name: 'Website Creation', desc: 'Modern, responsive, fast sites', icon: 'globe' },
       { name: 'Branding Kits', desc: 'Logo, colors, typography', icon: 'palette' },
       { name: 'Media Production', desc: 'Photo/video content creation', icon: 'camera' },
+      { name: 'Pitch Decks', desc: 'Investor-ready presentations', icon: 'presentation' },
+      { name: 'Social Media Content', desc: 'Graphics, reels & stories', icon: 'image' },
+      { name: 'Copywriting', desc: 'Website copy & marketing text', icon: 'pen-tool' },
     ]
   },
   {
@@ -62,7 +68,10 @@ export const SERVICES: ServiceCategory[] = [
     color: '#10B981',
     items: [
       { name: 'Startup Boost', desc: 'Financial + marketing plans', icon: 'rocket' },
+      { name: 'Business Consulting', desc: 'Strategy & operations advisory', icon: 'briefcase' },
+      { name: 'Market Research', desc: 'Competitor & audience analysis', icon: 'search' },
       { name: 'Custom AI Solutions', desc: 'Bespoke automation', icon: 'cpu' },
+      { name: 'SaaS Development', desc: 'Full-stack product builds', icon: 'layers' },
       { name: 'Contractor Command Center', desc: 'Full SaaS for construction', icon: 'building' },
     ]
   }

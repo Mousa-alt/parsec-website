@@ -170,7 +170,7 @@ export const Hero: React.FC = () => {
               number="01"
               title="AI That"
               highlight="Works"
-              items={['Voice Agents', 'Hiring', 'Social Media', 'Payments']}
+              items={['Personal Assistants', 'Voice Agents', 'Hiring', 'Support Bots', '+4 more']}
               accentColor="#2D4769"
               delay={0.2}
               onClick={scrollToServices}
@@ -179,7 +179,7 @@ export const Hero: React.FC = () => {
               number="02"
               title="Brands That"
               highlight="Pop"
-              items={['Websites', 'Logos', 'Media', 'Identity']}
+              items={['Websites', 'Branding', 'Pitch Decks', 'Copywriting', '+2 more']}
               accentColor="#8B5CF6"
               delay={0.3}
               onClick={scrollToServices}
@@ -188,7 +188,7 @@ export const Hero: React.FC = () => {
               number="03"
               title="Growth That"
               highlight="Lasts"
-              items={['Strategy', 'Custom AI', 'SaaS', 'Plans']}
+              items={['Consulting', 'Research', 'Custom AI', 'SaaS Dev', '+2 more']}
               accentColor="#10B981"
               delay={0.4}
               onClick={scrollToServices}

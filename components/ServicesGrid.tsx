@@ -18,22 +18,39 @@ import {
   Rocket,
   Cpu,
   Building,
-  MessageCircle
+  MessageCircle,
+  User,
+  FileText,
+  Presentation,
+  Image,
+  PenTool,
+  Briefcase,
+  Search,
+  Layers
 } from 'lucide-react';
 import { useTerminal } from '../TerminalContext';
 
 // Icon mapping for service items
 const iconMap: Record<string, React.ReactNode> = {
   'phone': <Phone className="w-5 h-5" />,
+  'user': <User className="w-5 h-5" />,
   'users': <Users className="w-5 h-5" />,
   'share': <Share2 className="w-5 h-5" />,
+  'message-circle': <MessageCircle className="w-5 h-5" />,
   'credit-card': <CreditCard className="w-5 h-5" />,
+  'file-text': <FileText className="w-5 h-5" />,
   'zap': <Zap className="w-5 h-5" />,
   'globe': <Globe className="w-5 h-5" />,
   'palette': <Palette className="w-5 h-5" />,
   'camera': <Camera className="w-5 h-5" />,
+  'presentation': <Presentation className="w-5 h-5" />,
+  'image': <Image className="w-5 h-5" />,
+  'pen-tool': <PenTool className="w-5 h-5" />,
   'rocket': <Rocket className="w-5 h-5" />,
+  'briefcase': <Briefcase className="w-5 h-5" />,
+  'search': <Search className="w-5 h-5" />,
   'cpu': <Cpu className="w-5 h-5" />,
+  'layers': <Layers className="w-5 h-5" />,
   'building': <Building className="w-5 h-5" />,
 };
 
