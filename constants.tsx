@@ -32,7 +32,7 @@ export const SERVICES: ServiceCategory[] = [
     id: 'automate',
     title: 'AI That Works',
     tagline: 'Your 24/7 digital workforce',
-    description: 'AI agents that handle calls, hire talent, post content, and process payments — while you sleep.',
+    description: 'AI agents that handle calls, hire talent, post content, and process payments — while you focus on what matters.',
     color: '#2D4769',
     items: [
       { name: 'Voice Agents', desc: '24/7 call handling & booking', icon: 'phone' },

@@ -164,20 +164,6 @@ export const Hero: React.FC = () => {
             {BRANDING.subtitle}
           </motion.p>
 
-          {/* Value Indicators - Subtle row above pillars */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.15 }}
-            className="flex items-center gap-3 md:gap-6 mb-6 md:mb-12 text-[10px] md:text-sm font-bold text-[#8EA3B5] uppercase tracking-widest"
-          >
-            <span>Fast deployment</span>
-            <span className="w-1 h-1 rounded-full bg-[#C5D2E0]" />
-            <span>Fair pricing</span>
-            <span className="w-1 h-1 rounded-full bg-[#C5D2E0]" />
-            <span>Proven results</span>
-          </motion.div>
-
           {/* Three Pillars - CLEAN & PROFESSIONAL */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-16">
             <ServicePillar
@@ -228,13 +214,6 @@ export const Hero: React.FC = () => {
             >
               Explore Services
             </button>
-            <div className="hidden sm:block w-px h-10 bg-[#E1E6EB]" />
-            <div className="flex items-center gap-3 md:gap-4 text-[#8EA3B5] text-xs md:text-sm font-bold">
-              <div className="flex -space-x-2 md:-space-x-3">
-                {[1, 2, 3, 4].map(i => <div key={i} className="w-7 h-7 md:w-9 md:h-9 rounded-full border-3 md:border-4 border-white bg-[#C5D2E0] shadow-sm" />)}
-              </div>
-              <span>Trusted by 50+ businesses</span>
-            </div>
           </motion.div>
         </div>
       </div>
