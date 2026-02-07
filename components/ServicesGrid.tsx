@@ -212,7 +212,7 @@ export const ServicesGrid: React.FC = () => {
       {/* Custom Project Card */}
       <div className="tactile-card bg-[#F8F9FA] border-[3px] border-dashed border-[#C5D2E0] flex flex-col md:flex-row items-center justify-between gap-6 p-8 md:p-10 group hover:border-[#2D4769] transition-colors duration-500">
         <div className="flex items-center gap-6">
-          <div className="w-20 h-20 rounded-2xl border-[3px] border-dashed border-[#8EA3B5] flex items-center justify-center group-hover:scale-110 group-hover:border-[#2D4769] transition-all duration-500 bg-white shadow-lg">
+          <div className="w-20 h-20 aspect-square shrink-0 rounded-2xl border-[3px] border-dashed border-[#8EA3B5] flex items-center justify-center group-hover:scale-110 group-hover:border-[#2D4769] transition-all duration-500 bg-white shadow-lg">
             <Logo size="md" showIcon />
           </div>
           <div>
