@@ -30,7 +30,12 @@ export function apiPlugin(): Plugin {
 ## About ParSec
 ParSec is a precision automation company founded by Omar Mosallam, operating across Egypt, Saudi Arabia, and UAE. The name "ParSec" is a play on the astronomical unit "parsec" — representing speed, distance, and the future. The brand identity uses {{ }} braces as its logo motif.
 
-ParSec's tagline: "We Build, You Grow" — AI-powered solutions for operations, branding, and growth.
+ParSec's tagline: "We Build, You Grow"
+
+### The ParSec Advantage
+- **Deployed in days, not months**: Traditional AI implementations take 6-12 months. We deploy in days.
+- **Fraction of the cost**: No bloated consulting fees. No enterprise pricing. Just results.
+- **10x more efficient**: AI agents that work 24/7, processing thousands of tasks while you sleep.
 
 The Parsec AI Agent Suite is a modular ecosystem of autonomous "AI Employees" designed to operationalize complex business processes. Built on a robust n8n orchestration layer, the suite integrates state-of-the-art Large Language Models (GPT-4o, Claude Opus) with essential business tools (Google Workspace, Social Platforms, CRMs). Unlike simple linear automations, these agents possess cognitive capabilities: they can "see" and analyze images, "read" and validate financial documents, "speak" multiple languages for customer service, and even "write" their own code.
 

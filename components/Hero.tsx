@@ -159,10 +159,32 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-2xl text-[#557089] font-medium max-w-3xl mb-10 md:mb-16 leading-relaxed"
+            className="text-lg md:text-2xl text-[#557089] font-medium max-w-3xl mb-6 md:mb-8 leading-relaxed"
           >
             {BRANDING.subtitle}
           </motion.p>
+
+          {/* Selling Point Metrics */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="flex flex-wrap gap-3 md:gap-4 mb-10 md:mb-16"
+          >
+            {[
+              { label: 'Days', vs: 'not months', accent: '#2D4769' },
+              { label: 'Fraction', vs: 'of the cost', accent: '#8B5CF6' },
+              { label: '10x', vs: 'efficiency', accent: '#10B981' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-[#E1E6EB] hover:border-[#C5D2E0] transition-colors"
+              >
+                <span className="font-black text-sm md:text-base" style={{ color: item.accent }}>{item.label}</span>
+                <span className="text-[10px] md:text-xs font-bold text-[#8EA3B5] uppercase tracking-wider">{item.vs}</span>
+              </div>
+            ))}
+          </motion.div>
 
           {/* Three Pillars - CLEAN & PROFESSIONAL */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
