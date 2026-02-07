@@ -164,26 +164,18 @@ export const Hero: React.FC = () => {
             {BRANDING.subtitle}
           </motion.p>
 
-          {/* Selling Point Metrics */}
+          {/* Value Indicators - Subtle row above pillars */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.15 }}
-            className="flex flex-wrap gap-3 md:gap-4 mb-10 md:mb-16"
+            className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12 text-xs md:text-sm font-bold text-[#8EA3B5] uppercase tracking-widest"
           >
-            {[
-              { label: 'Days', vs: 'not months', accent: '#2D4769' },
-              { label: 'Fraction', vs: 'of the cost', accent: '#8B5CF6' },
-              { label: '10x', vs: 'efficiency', accent: '#10B981' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-[#E1E6EB] hover:border-[#C5D2E0] transition-colors"
-              >
-                <span className="font-black text-sm md:text-base" style={{ color: item.accent }}>{item.label}</span>
-                <span className="text-[10px] md:text-xs font-bold text-[#8EA3B5] uppercase tracking-wider">{item.vs}</span>
-              </div>
-            ))}
+            <span>Fast deployment</span>
+            <span className="w-1 h-1 rounded-full bg-[#C5D2E0]" />
+            <span>Fair pricing</span>
+            <span className="w-1 h-1 rounded-full bg-[#C5D2E0]" />
+            <span>Proven results</span>
           </motion.div>
 
           {/* Three Pillars - CLEAN & PROFESSIONAL */}

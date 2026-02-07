@@ -8,7 +8,7 @@ import { Product, Metric, CaseStudy, Testimonial, ServiceCategory } from './type
 export const BRANDING = {
   name: "ParSec",
   tagline: "We Build, You Grow",
-  subtitle: "AI agents deployed in days, not months. At a fraction of the cost. With 10x the efficiency.",
+  subtitle: "Enterprise-grade AI solutions—without the enterprise timeline or price tag.",
   version: "v2.5.0",
   author: "Omar Mosallam",
   locations: "Egypt, Saudi Arabia & UAE",
