@@ -1,13 +1,14 @@
 
 import React from 'react';
-import { Product, Metric, CaseStudy, Testimonial } from './types';
+import { Product, Metric, CaseStudy, Testimonial, ServiceCategory } from './types';
 
 // ============================================
 // BRANDING - Edit your company info here
 // ============================================
 export const BRANDING = {
   name: "ParSec",
-  tagline: "Engineering precision automation for high-consequence enterprise.",
+  tagline: "We Build, You Grow",
+  subtitle: "AI-powered solutions for operations, branding, and growth — so you can focus on what matters.",
   version: "v2.5.0",
   author: "Omar Mosallam",
   locations: "Egypt, Saudi Arabia & UAE",
@@ -19,19 +20,63 @@ export const BRANDING = {
 // ============================================
 export const WHATSAPP = {
   number: "201288181123",
-  defaultMessage: "Hi, I'm interested in learning more about ParSec's automation solutions.",
+  defaultMessage: "Hi, I'm interested in learning more about ParSec's solutions.",
   portfolioUrl: "https://omarmosallam.parsec.solutions",
 };
+
+// ============================================
+// SERVICES - Organized by outcome/problem solved
+// ============================================
+export const SERVICES: ServiceCategory[] = [
+  {
+    id: 'automate',
+    title: 'Automate Operations',
+    tagline: 'AI employees that never sleep',
+    description: 'Autonomous AI agents handling calls, hiring, content, payments, and workflows 24/7.',
+    color: '#2D4769',
+    items: [
+      { name: 'Voice Agents', desc: '24/7 call handling & booking', icon: 'phone' },
+      { name: 'Hiring Agents', desc: 'Screening & candidate outreach', icon: 'users' },
+      { name: 'Social Media Agents', desc: 'Content scheduling & publishing', icon: 'share' },
+      { name: 'Payment Processing', desc: 'Invoice validation & approvals', icon: 'credit-card' },
+      { name: 'Workflow Automation', desc: 'N8N, bots, integrations', icon: 'zap' },
+    ]
+  },
+  {
+    id: 'brand',
+    title: 'Build Your Brand',
+    tagline: 'From concept to launch',
+    description: 'Websites, branding kits, and media production that make you stand out.',
+    color: '#557089',
+    items: [
+      { name: 'Website Creation', desc: 'Modern, responsive, fast sites', icon: 'globe' },
+      { name: 'Branding Kits', desc: 'Logo, colors, typography', icon: 'palette' },
+      { name: 'Media Production', desc: 'Photo/video content creation', icon: 'camera' },
+    ]
+  },
+  {
+    id: 'grow',
+    title: 'Grow Your Business',
+    tagline: 'Strategy that scales',
+    description: 'Strategic planning and custom solutions to accelerate your growth.',
+    color: '#8EA3B5',
+    items: [
+      { name: 'Startup Boost', desc: 'Financial + marketing plans', icon: 'rocket' },
+      { name: 'Custom AI Solutions', desc: 'Bespoke automation', icon: 'cpu' },
+      { name: 'Contractor Command Center', desc: 'Full SaaS for construction', icon: 'building' },
+    ]
+  }
+];
 
 // ============================================
 // TYPEWRITER - Words that rotate in hero
 // ============================================
 export const TYPEWRITER_WORDS = [
-  "The Future",
-  "Precision",
-  "Scale",
-  "Excellence",
-  "Automation"
+  "Your Brand",
+  "Your Systems",
+  "Your Growth",
+  "Your Future",
+  "Everything"
 ];
 
 // ============================================

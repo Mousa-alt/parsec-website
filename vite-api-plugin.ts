@@ -30,7 +30,7 @@ export function apiPlugin(): Plugin {
 ## About ParSec
 ParSec is a precision automation company founded by Omar Mosallam, operating across Egypt, Saudi Arabia, and UAE. The name "ParSec" is a play on the astronomical unit "parsec" — representing speed, distance, and the future. The brand identity uses {{ }} braces as its logo motif.
 
-ParSec's tagline: "Engineering precision automation for high-consequence enterprise."
+ParSec's tagline: "We Build, You Grow" — AI-powered solutions for operations, branding, and growth.
 
 The Parsec AI Agent Suite is a modular ecosystem of autonomous "AI Employees" designed to operationalize complex business processes. Built on a robust n8n orchestration layer, the suite integrates state-of-the-art Large Language Models (GPT-4o, Claude Opus) with essential business tools (Google Workspace, Social Platforms, CRMs). Unlike simple linear automations, these agents possess cognitive capabilities: they can "see" and analyze images, "read" and validate financial documents, "speak" multiple languages for customer service, and even "write" their own code.
 
@@ -40,9 +40,67 @@ The Parsec AI Agent Suite is a modular ecosystem of autonomous "AI Employees" de
 - Unified Data Backbone: Uses Google Sheets and Drive as a flexible, accessible CMS and database
 - Zero-Code Maintainability: All logic governed by Google Sheets — non-technical users can change limits or prompts by editing a spreadsheet cell
 
-## Products & Services
+## Services (Organized by Outcome)
 
-### 1. Contractor Command Center (formerly Sigma HQ) — FinOps Agent
+### AUTOMATE OPERATIONS — "AI employees that never sleep"
+
+#### Voice Agents
+- 24/7 call handling & booking for businesses
+- Bilingual (Arabic/English) with auto-translation
+- Real-time availability checking
+- Deployed at Prime Dental — eliminated front-desk bottlenecks
+
+#### Hiring Agents
+- AI-powered recruitment automation
+- Screening, shortlisting, and candidate communication
+- Saves HR teams 40+ hours/week
+
+#### Social Media Agents
+- Content scheduling & publishing automation
+- GPT-4o Vision analyzes photos for quality scores (1-10)
+- Auto-generates captions (Professional, Casual, Story)
+- Reduces media sorting time by ~90%
+
+#### Payment Processing
+- Invoice validation & approval workflows
+- Cross-references sheets to prevent overpayment
+- Auto-drafts approval/rejection emails
+
+#### Workflow Automation
+- N8N workflows, Telegram & WhatsApp bots
+- RAG-powered smart search
+- Custom integrations and pipelines
+
+### BUILD YOUR BRAND — "From concept to launch"
+
+#### Website Creation
+- Modern, responsive, fast-loading sites
+- Built with React, TypeScript, Tailwind CSS
+- SEO-optimized, mobile-first design
+
+#### Branding Kits
+- Logo design, color palettes, typography
+- Brand guidelines documentation
+- Visual identity systems
+
+#### Media Production
+- Photo/video content creation
+- AI-powered asset organization
+- "Hero Shot" identification for marketing
+
+### GROW YOUR BUSINESS — "Strategy that scales"
+
+#### Startup Boost Package
+- Financial planning & projections
+- Marketing strategy & execution plans
+- Comprehensive business roadmaps
+
+#### Custom AI Solutions
+- Bespoke automation for unique challenges
+- Developer Agent that writes n8n workflow code
+- Rapid prototyping of internal tools
+
+#### Contractor Command Center (formerly Sigma HQ) — FinOps Agent
 - AI-powered SaaS platform for high-end fit-out contractors
 - Automates bidding processes, team management, and real-time margin tracking
 - Payment Processor: Cross-references Contractor Sheets against Master Dashboards to validate payment amounts, percentages, and work items

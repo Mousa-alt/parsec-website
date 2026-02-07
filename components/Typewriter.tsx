@@ -40,8 +40,8 @@ export const Typewriter: React.FC = () => {
 
   return (
     <div className="font-['Poppins']">
-      {/* "Engineering" on its own line */}
-      <div className="opacity-90 mb-2">Engineering</div>
+      {/* "We Build" on its own line */}
+      <div className="opacity-90 mb-2">We Build</div>
 
       {/* Braces with typewriter text - responsive sizing to match h1 */}
       <div className="flex items-center whitespace-nowrap">

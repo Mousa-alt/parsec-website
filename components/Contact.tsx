@@ -6,7 +6,7 @@ import { WHATSAPP } from '../constants.tsx';
 export const Contact: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [inquiryType, setInquiryType] = useState('Contractor Command Center');
+  const [inquiryType, setInquiryType] = useState('Automate Operations');
   const [message, setMessage] = useState('');
 
   const handleSubmit = () => {
@@ -71,9 +71,10 @@ export const Contact: React.FC = () => {
               onChange={(e) => setInquiryType(e.target.value)}
               className="w-full bg-white border border-[#E1E6EB] rounded-xl px-4 py-3 outline-none focus:border-[#2D4769] transition-colors text-[#2D4769] appearance-none cursor-pointer"
             >
-              <option>Contractor Command Center</option>
-              <option>Voice Agent Deployment</option>
-              <option>General Architecture</option>
+              <option>Automate Operations</option>
+              <option>Build Your Brand</option>
+              <option>Grow Your Business</option>
+              <option>Custom Project</option>
             </select>
           </div>
           <div className="group">
@@ -82,7 +83,7 @@ export const Contact: React.FC = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="w-full bg-white border border-[#E1E6EB] rounded-xl px-4 py-3 outline-none focus:border-[#2D4769] transition-colors text-[#2D4769] placeholder:text-[#C5D2E0] resize-none"
-              placeholder="What are you engineering?"
+              placeholder="Tell us about your project..."
               rows={3}
             />
           </div>

@@ -15,11 +15,11 @@ interface TerminalLine {
 const COMMANDS: Record<string, () => TerminalLine[]> = {
   help: () => [
     { type: 'info', text: '┌─────────────────────────────────────────────────┐' },
-    { type: 'info', text: '│  PARSEC COMMAND INTERFACE v2.4.1                │' },
+    { type: 'info', text: '│  PARSEC COMMAND INTERFACE v2.5.0                │' },
     { type: 'info', text: '├─────────────────────────────────────────────────┤' },
     { type: 'sys', text: '│  help      → Display this help menu             │' },
     { type: 'sys', text: '│  status    → System health & metrics            │' },
-    { type: 'sys', text: '│  products  → View our AI solutions              │' },
+    { type: 'sys', text: '│  services  → View all our services              │' },
     { type: 'sys', text: '│  roi       → Calculate automation ROI           │' },
     { type: 'sys', text: '│  demo      → Experience AI capability           │' },
     { type: 'sys', text: '│  book      → Schedule a strategy call           │' },
@@ -33,27 +33,45 @@ const COMMANDS: Record<string, () => TerminalLine[]> = {
     { type: 'sys', text: '──────────────────────────────────' },
     { type: 'sys', text: '  Uptime:        99.97% (365 days)' },
     { type: 'sys', text: '  Active Nodes:  47 worldwide' },
-    { type: 'sys', text: '  AI Models:     GPT-4, Claude, Custom LLMs' },
+    { type: 'sys', text: '  AI Models:     GPT-4o, Claude, Custom LLMs' },
     { type: 'sys', text: '  Latency:       12ms avg response' },
-    { type: 'sys', text: '  Security:      SOC2 Type II Compliant' },
+    { type: 'sys', text: '  Regions:       Egypt, Saudi Arabia, UAE' },
     { type: 'success', text: '  Status:        ALL SYSTEMS OPERATIONAL' },
+  ],
+  services: () => [
+    { type: 'info', text: '╔═══════════════════════════════════════════════╗' },
+    { type: 'info', text: '║            PARSEC SERVICE CATALOG             ║' },
+    { type: 'info', text: '╠═══════════════════════════════════════════════╣' },
+    { type: 'success', text: '║  ⚡ AUTOMATE OPERATIONS                       ║' },
+    { type: 'sys', text: '║     Voice Agents • Hiring Agents              ║' },
+    { type: 'sys', text: '║     Social Media Agents • Payment Processing  ║' },
+    { type: 'sys', text: '║     Workflow Automation                       ║' },
+    { type: 'info', text: '║───────────────────────────────────────────────║' },
+    { type: 'success', text: '║  🎨 BUILD YOUR BRAND                          ║' },
+    { type: 'sys', text: '║     Website Creation • Branding Kits          ║' },
+    { type: 'sys', text: '║     Media Production                          ║' },
+    { type: 'info', text: '║───────────────────────────────────────────────║' },
+    { type: 'success', text: '║  📈 GROW YOUR BUSINESS                        ║' },
+    { type: 'sys', text: '║     Startup Boost • Custom AI Solutions       ║' },
+    { type: 'sys', text: '║     Contractor Command Center (SaaS)          ║' },
+    { type: 'info', text: '╚═══════════════════════════════════════════════╝' },
   ],
   products: () => [
     { type: 'info', text: '╔═══════════════════════════════════════════════╗' },
-    { type: 'info', text: '║          PARSEC PRODUCT ECOSYSTEM             ║' },
+    { type: 'info', text: '║            PARSEC SERVICE CATALOG             ║' },
     { type: 'info', text: '╠═══════════════════════════════════════════════╣' },
-    { type: 'success', text: '║  [01] SIGMA HQ                                ║' },
-    { type: 'sys', text: '║       AI operating system for fit-out         ║' },
-    { type: 'sys', text: '║       contractors. Automate bids, manage      ║' },
-    { type: 'sys', text: '║       teams, track margins in real-time.      ║' },
+    { type: 'success', text: '║  ⚡ AUTOMATE OPERATIONS                       ║' },
+    { type: 'sys', text: '║     Voice Agents • Hiring Agents              ║' },
+    { type: 'sys', text: '║     Social Media Agents • Payment Processing  ║' },
+    { type: 'sys', text: '║     Workflow Automation                       ║' },
     { type: 'info', text: '║───────────────────────────────────────────────║' },
-    { type: 'success', text: '║  [02] VOICE AGENTS                            ║' },
-    { type: 'sys', text: '║       24/7 AI receptionists for dental        ║' },
-    { type: 'sys', text: '║       clinics. Never miss a call again.       ║' },
+    { type: 'success', text: '║  🎨 BUILD YOUR BRAND                          ║' },
+    { type: 'sys', text: '║     Website Creation • Branding Kits          ║' },
+    { type: 'sys', text: '║     Media Production                          ║' },
     { type: 'info', text: '║───────────────────────────────────────────────║' },
-    { type: 'success', text: '║  [03] AI ASSISTANTS                           ║' },
-    { type: 'sys', text: '║       Personal AI that learns your workflow   ║' },
-    { type: 'sys', text: '║       and multiplies your productivity.       ║' },
+    { type: 'success', text: '║  📈 GROW YOUR BUSINESS                        ║' },
+    { type: 'sys', text: '║     Startup Boost • Custom AI Solutions       ║' },
+    { type: 'sys', text: '║     Contractor Command Center (SaaS)          ║' },
     { type: 'info', text: '╚═══════════════════════════════════════════════╝' },
   ],
   roi: () => [
@@ -81,7 +99,7 @@ const COMMANDS: Record<string, () => TerminalLine[]> = {
     { type: 'sys', text: '     Manual equivalent: ~15 minutes' },
   ],
   book: () => [
-    { type: 'success', text: '📅 STRATEGY SESSION BOOKING' },
+    { type: 'success', text: '📅 FREE STRATEGY SESSION' },
     { type: 'sys', text: '──────────────────────────────────' },
     { type: 'sys', text: '  What you\'ll get:' },
     { type: 'sys', text: '' },
@@ -90,7 +108,7 @@ const COMMANDS: Record<string, () => TerminalLine[]> = {
     { type: 'info', text: '  ✦ ROI projection for your business' },
     { type: 'info', text: '  ✦ Live product demonstration' },
     { type: 'sys', text: '' },
-    { type: 'alert', text: '  → Click "Execute System Brief" above to book' },
+    { type: 'alert', text: '  → Scroll to contact section or message via WhatsApp' },
   ],
 };
 
@@ -254,7 +272,7 @@ export const Terminal: React.FC = () => {
       {/* Quick Commands Bar */}
       <div className="bg-[#F0F2F5] border-b border-[#E1E6EB] px-2 md:px-4 py-2 flex items-center gap-1.5 md:gap-2 overflow-x-auto">
         <span className="text-[8px] md:text-[9px] font-black uppercase tracking-wider md:tracking-widest text-[#8EA3B5] mr-1 md:mr-2 shrink-0">Quick:</span>
-        {['help', 'products', 'roi', 'demo', 'book'].map((cmd) => (
+        {['help', 'services', 'roi', 'demo', 'book'].map((cmd) => (
           <button
             key={cmd}
             onClick={() => handleQuickCommand(cmd)}

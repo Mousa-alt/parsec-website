@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { ProductsGrid } from './components/ProductsGrid';
+import { ServicesGrid } from './components/ServicesGrid';
 import { Terminal } from './components/Terminal';
 import { Metrics } from './components/Metrics';
 import { CaseStudies } from './components/CaseStudies';
@@ -16,11 +16,11 @@ import { Home, Layers, Terminal as TermIcon, Award, MessageCircle } from 'lucide
 
 const Sidebar: React.FC = () => {
   const navItems = [
-    { icon: <Home className="w-4 h-4" />, href: '#home', label: 'Index' },
-    { icon: <Layers className="w-4 h-4" />, href: '#products', label: 'Solutions' },
+    { icon: <Home className="w-4 h-4" />, href: '#home', label: 'Home' },
+    { icon: <Layers className="w-4 h-4" />, href: '#services', label: 'Services' },
     { icon: <TermIcon className="w-4 h-4" />, href: '#demo', label: 'Console' },
-    { icon: <Award className="w-4 h-4" />, href: '#case-studies', label: 'Success' },
-    { icon: <MessageCircle className="w-4 h-4" />, href: '#contact', label: 'Query' },
+    { icon: <Award className="w-4 h-4" />, href: '#case-studies', label: 'Results' },
+    { icon: <MessageCircle className="w-4 h-4" />, href: '#contact', label: 'Contact' },
   ];
 
   return (
@@ -65,17 +65,17 @@ const App: React.FC = () => {
 
         <div className="h-12 md:h-24" />
 
-        <section id="products" className="mb-20 md:mb-40">
+        <section id="services" className="mb-20 md:mb-40">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Architectural Library</h2>
-            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">DB.PRSC.v2</span>
+            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Our Services</h2>
+            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">What We Do</span>
           </motion.div>
-          <ProductsGrid />
+          <ServicesGrid />
         </section>
 
         <section id="demo" className="mb-20 md:mb-40">

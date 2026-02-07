@@ -8,6 +8,21 @@ export interface Product {
   image: string;
 }
 
+export interface ServiceItem {
+  name: string;
+  desc: string;
+  icon: string;
+}
+
+export interface ServiceCategory {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  items: ServiceItem[];
+  color: string;
+}
+
 export interface Metric {
   label: string;
   value: string;
