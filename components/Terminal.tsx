@@ -345,8 +345,8 @@ export const Terminal: React.FC = () => {
         </div>
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="hidden sm:inline">PARSEC_NODE_LONDON</span>
-          <span className="sm:hidden">LONDON</span>
+          <span className="hidden sm:inline">PARSEC_NODE_CAIRO</span>
+          <span className="sm:hidden">CAIRO</span>
         </div>
       </div>
     </div>
