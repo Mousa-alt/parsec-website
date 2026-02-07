@@ -25,7 +25,7 @@ const ServicePillar: React.FC<ServicePillarProps> = ({
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay }}
     onClick={onClick}
-    className="flex-1 relative bg-white border-2 border-[#E1E6EB] p-6 md:p-8 rounded-2xl cursor-pointer group overflow-hidden hover:border-[#2D4769] transition-all duration-300"
+    className="flex-1 relative bg-white border-2 border-[#E1E6EB] p-5 md:p-8 rounded-2xl cursor-pointer group overflow-hidden hover:border-[#2D4769] transition-all duration-300"
   >
     {/* Subtle gradient accent */}
     <div
@@ -87,7 +87,7 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative">
       {/* Cover Video - Living, breathing hero */}
-      <div className="relative h-[280px] w-full rounded-t-[2.5rem] overflow-hidden group mb-16 shadow-2xl shadow-[#2D4769]/10">
+      <div className="relative h-[180px] md:h-[280px] w-full rounded-t-[2.5rem] overflow-hidden group mb-8 md:mb-16 shadow-2xl shadow-[#2D4769]/10">
         <video
           autoPlay
           loop
@@ -125,19 +125,19 @@ export const Hero: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ rotate: -3, scale: 1.05 }}
-          className="absolute -top-32 md:-top-44 left-4 md:left-14 w-32 h-32 md:w-52 md:h-52 aspect-square shrink-0 rounded-[2rem] md:rounded-[3.5rem] bg-white border-[3px] border-dashed border-[#C5D2E0] shadow-[0_30px_60px_-15px_rgba(45,71,105,0.25)] flex items-center justify-center cursor-pointer group hover:border-[#2D4769] transition-colors duration-500 z-30"
+          className="absolute -top-20 md:-top-44 left-4 md:left-14 w-24 h-24 md:w-52 md:h-52 aspect-square shrink-0 rounded-[1.5rem] md:rounded-[3.5rem] bg-white border-[3px] border-dashed border-[#C5D2E0] shadow-[0_30px_60px_-15px_rgba(45,71,105,0.25)] flex items-center justify-center cursor-pointer group hover:border-[#2D4769] transition-colors duration-500 z-30"
         >
           <div className="group-hover:scale-110 transition-transform duration-500">
             <Logo size="2xl" showIcon />
           </div>
         </motion.div>
 
-        <div className="pt-12 md:pt-20">
+        <div className="pt-8 md:pt-20">
           {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-6 md:mb-10"
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 md:mb-10"
           >
             <div className="px-3 md:px-5 py-1.5 md:py-2 rounded-full bg-[#2D4769] text-white text-[10px] md:text-xs font-black uppercase tracking-[0.15em] md:tracking-[0.25em] shadow-lg shadow-[#2D4769]/30">
               AI-Powered Agency
@@ -149,7 +149,7 @@ export const Hero: React.FC = () => {
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black tracking-[-0.05em] mb-6 md:mb-8 text-[#2D4769] leading-[0.9]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black tracking-[-0.05em] mb-4 md:mb-8 text-[#2D4769] leading-[0.9]"
           >
             <Typewriter />
           </motion.h1>
@@ -159,7 +159,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-2xl text-[#557089] font-medium max-w-3xl mb-6 md:mb-8 leading-relaxed"
+            className="text-base md:text-2xl text-[#557089] font-medium max-w-3xl mb-4 md:mb-8 leading-relaxed"
           >
             {BRANDING.subtitle}
           </motion.p>
@@ -169,7 +169,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15 }}
-            className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12 text-xs md:text-sm font-bold text-[#8EA3B5] uppercase tracking-widest"
+            className="flex items-center gap-3 md:gap-6 mb-6 md:mb-12 text-[10px] md:text-sm font-bold text-[#8EA3B5] uppercase tracking-widest"
           >
             <span>Fast deployment</span>
             <span className="w-1 h-1 rounded-full bg-[#C5D2E0]" />
@@ -179,7 +179,7 @@ export const Hero: React.FC = () => {
           </motion.div>
 
           {/* Three Pillars - CLEAN & PROFESSIONAL */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-16">
             <ServicePillar
               number="01"
               title="AI That"
