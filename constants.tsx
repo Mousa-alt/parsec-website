@@ -30,9 +30,9 @@ export const WHATSAPP = {
 export const SERVICES: ServiceCategory[] = [
   {
     id: 'automate',
-    title: 'Automate Operations',
-    tagline: 'AI employees that never sleep',
-    description: 'Autonomous AI agents handling calls, hiring, content, payments, and workflows 24/7.',
+    title: 'AI That Works',
+    tagline: 'Your 24/7 digital workforce',
+    description: 'AI agents that handle calls, hire talent, post content, and process payments — while you sleep.',
     color: '#2D4769',
     items: [
       { name: 'Voice Agents', desc: '24/7 call handling & booking', icon: 'phone' },
@@ -44,10 +44,10 @@ export const SERVICES: ServiceCategory[] = [
   },
   {
     id: 'brand',
-    title: 'Build Your Brand',
-    tagline: 'From concept to launch',
-    description: 'Websites, branding kits, and media production that make you stand out.',
-    color: '#557089',
+    title: 'Brands That Pop',
+    tagline: 'Stand out. Get noticed.',
+    description: 'Websites, logos, and media that make your competition nervous.',
+    color: '#8B5CF6',
     items: [
       { name: 'Website Creation', desc: 'Modern, responsive, fast sites', icon: 'globe' },
       { name: 'Branding Kits', desc: 'Logo, colors, typography', icon: 'palette' },
@@ -56,10 +56,10 @@ export const SERVICES: ServiceCategory[] = [
   },
   {
     id: 'grow',
-    title: 'Grow Your Business',
-    tagline: 'Strategy that scales',
-    description: 'Strategic planning and custom solutions to accelerate your growth.',
-    color: '#8EA3B5',
+    title: 'Growth That Lasts',
+    tagline: 'Scale smart. Win big.',
+    description: 'Strategy, custom AI, and tools that turn startups into market leaders.',
+    color: '#10B981',
     items: [
       { name: 'Startup Boost', desc: 'Financial + marketing plans', icon: 'rocket' },
       { name: 'Custom AI Solutions', desc: 'Bespoke automation', icon: 'cpu' },

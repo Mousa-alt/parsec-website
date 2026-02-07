@@ -4,30 +4,69 @@ import { motion } from 'framer-motion';
 import { BRANDING, SERVICES } from '../constants.tsx';
 import { Logo } from './Logo';
 import { Typewriter } from './Typewriter';
-import { ArrowRight, Zap, Palette, TrendingUp, Play } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import { useTerminal } from '../TerminalContext';
 
-const ServicePillar: React.FC<{
+interface ServicePillarProps {
+  number: string;
   title: string;
-  tagline: string;
-  icon: React.ReactNode;
+  highlight: string;
+  items: string[];
+  accentColor: string;
   delay: number;
   onClick: () => void;
-}> = ({ title, tagline, icon, delay, onClick }) => (
+}
+
+const ServicePillar: React.FC<ServicePillarProps> = ({
+  number, title, highlight, items, accentColor, delay, onClick
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay }}
     onClick={onClick}
-    className="flex-1 bg-white border border-[#E1E6EB] p-6 md:p-8 rounded-2xl hover:shadow-xl hover:border-[#2D4769] transition-all cursor-pointer group"
+    className="flex-1 relative bg-white border-2 border-[#E1E6EB] p-6 md:p-8 rounded-2xl cursor-pointer group overflow-hidden hover:border-[#2D4769] transition-all duration-300"
   >
-    <div className="w-12 h-12 md:w-14 md:h-14 bg-[#F0F2F5] rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#2D4769] group-hover:text-white transition-all">
-      {icon}
+    {/* Subtle gradient accent */}
+    <div
+      className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{ background: accentColor }}
+    />
+
+    {/* Large number as design element */}
+    <div
+      className="text-6xl md:text-7xl font-black mb-2 opacity-[0.08] absolute top-4 right-4 select-none"
+      style={{ color: accentColor }}
+    >
+      {number}
     </div>
-    <h3 className="text-lg md:text-xl font-black text-[#2D4769] mb-2 tracking-tight">{title}</h3>
-    <p className="text-sm text-[#8EA3B5] font-medium">{tagline}</p>
-    <div className="mt-4 flex items-center gap-2 text-xs font-black text-[#2D4769] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-      Learn More <ArrowRight className="w-3.5 h-3.5" />
+
+    {/* Small colored dot indicator */}
+    <div
+      className="w-3 h-3 rounded-full mb-4"
+      style={{ background: accentColor }}
+    />
+
+    {/* Title with colored highlight */}
+    <h3 className="text-lg md:text-xl font-black text-[#2D4769] mb-3 tracking-tight relative z-10">
+      {title} <span style={{ color: accentColor }}>{highlight}</span>
+    </h3>
+
+    {/* Service items as pills */}
+    <div className="flex flex-wrap gap-2 mb-4 relative z-10">
+      {items.map((item, i) => (
+        <span
+          key={i}
+          className="text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-full bg-[#F0F2F5] text-[#557089] border border-[#E1E6EB] group-hover:border-[#C5D2E0] transition-colors"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+
+    {/* Hover CTA */}
+    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 relative z-10" style={{ color: accentColor }}>
+      Explore <ArrowRight className="w-3.5 h-3.5" />
     </div>
   </motion.div>
 );
@@ -125,26 +164,32 @@ export const Hero: React.FC = () => {
             {BRANDING.subtitle}
           </motion.p>
 
-          {/* Three Pillars - OUTCOME-FOCUSED */}
+          {/* Three Pillars - CLEAN & PROFESSIONAL */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
             <ServicePillar
-              title={SERVICES[0].title}
-              tagline={SERVICES[0].tagline}
-              icon={<Zap className="w-6 h-6 text-[#2D4769]" />}
+              number="01"
+              title="AI That"
+              highlight="Works"
+              items={['Voice Agents', 'Hiring', 'Social Media', 'Payments']}
+              accentColor="#2D4769"
               delay={0.2}
               onClick={scrollToServices}
             />
             <ServicePillar
-              title={SERVICES[1].title}
-              tagline={SERVICES[1].tagline}
-              icon={<Palette className="w-6 h-6 text-[#2D4769]" />}
+              number="02"
+              title="Brands That"
+              highlight="Pop"
+              items={['Websites', 'Logos', 'Media', 'Identity']}
+              accentColor="#8B5CF6"
               delay={0.3}
               onClick={scrollToServices}
             />
             <ServicePillar
-              title={SERVICES[2].title}
-              tagline={SERVICES[2].tagline}
-              icon={<TrendingUp className="w-6 h-6 text-[#2D4769]" />}
+              number="03"
+              title="Growth That"
+              highlight="Lasts"
+              items={['Strategy', 'Custom AI', 'SaaS', 'Plans']}
+              accentColor="#10B981"
               delay={0.4}
               onClick={scrollToServices}
             />
