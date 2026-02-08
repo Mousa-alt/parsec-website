@@ -30,11 +30,30 @@ export interface Metric {
   suffix?: string;
 }
 
+export interface CaseStudyNarrative {
+  nightmare: {
+    title: string;
+    story: string;
+    painMetric: string;
+  };
+  magicMoment: {
+    title: string;
+    story: string;
+    agentUsed: string;
+  };
+  newReality: {
+    title: string;
+    story: string;
+    resultMetrics: string[];
+  };
+}
+
 export interface CaseStudy {
   client: string;
   industry: string;
   result: string;
   outcome: string;
+  narrative?: CaseStudyNarrative;
 }
 
 export interface Testimonial {
