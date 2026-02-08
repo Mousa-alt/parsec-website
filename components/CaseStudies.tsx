@@ -5,7 +5,7 @@ import { CASE_STUDIES } from '../constants.tsx';
 import { ArrowRight, ArrowDown, AlertTriangle, Sparkles, Rocket, Check, ChevronDown, ChevronUp, Download, Play } from 'lucide-react';
 
 export const CaseStudies: React.FC = () => {
-  const [expandedStudy, setExpandedStudy] = useState<string | null>(CASE_STUDIES[0]?.client || null);
+  const [expandedStudy, setExpandedStudy] = useState<string | null>(null);
 
   const toggleStudy = (client: string) => {
     setExpandedStudy(expandedStudy === client ? null : client);

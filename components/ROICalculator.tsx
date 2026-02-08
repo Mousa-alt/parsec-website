@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Calculator, Clock, DollarSign, TrendingUp, Zap, ArrowRight } from 'lucide-react';
+import { Calculator, Clock, DollarSign, TrendingUp, Zap, ArrowRight, ChevronDown } from 'lucide-react';
 
 interface ROIResults {
   annualHoursSaved: number;
@@ -8,6 +8,20 @@ interface ROIResults {
   roiPercentage: number;
   paybackWeeks: number;
 }
+
+interface Currency {
+  code: string;
+  symbol: string;
+  name: string;
+  rate: number; // Relative to USD
+}
+
+const CURRENCIES: Currency[] = [
+  { code: 'USD', symbol: '$', name: 'US Dollar', rate: 1 },
+  { code: 'EGP', symbol: 'E£', name: 'Egyptian Pound', rate: 50 },
+  { code: 'SAR', symbol: 'SR', name: 'Saudi Riyal', rate: 3.75 },
+  { code: 'AED', symbol: 'AED', name: 'UAE Dirham', rate: 3.67 },
+];
 
 const AnimatedNumber: React.FC<{ value: number; prefix?: string; suffix?: string }> = ({
   value, prefix = '', suffix = ''
@@ -18,8 +32,8 @@ const AnimatedNumber: React.FC<{ value: number; prefix?: string; suffix?: string
 
   useEffect(() => {
     if (isInView) {
-      const duration = 1000;
-      const steps = 30;
+      const duration = 800;
+      const steps = 25;
       const increment = value / steps;
       let current = 0;
       const timer = setInterval(() => {
@@ -45,6 +59,8 @@ const AnimatedNumber: React.FC<{ value: number; prefix?: string; suffix?: string
 export const ROICalculator: React.FC = () => {
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
   const [hourlyRate, setHourlyRate] = useState(25);
+  const [currency, setCurrency] = useState<Currency>(CURRENCIES[0]);
+  const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
   const [results, setResults] = useState<ROIResults>({
     annualHoursSaved: 0,
     annualCostSaved: 0,
@@ -53,10 +69,10 @@ export const ROICalculator: React.FC = () => {
   });
 
   useEffect(() => {
-    // Calculate savings (90% reduction in manual work)
     const weeksPerYear = 50;
     const reductionRate = 0.9;
-    const agentMonthlyCost = 500; // Estimated agent cost
+    const agentMonthlyCostUSD = 500;
+    const agentMonthlyCost = agentMonthlyCostUSD * currency.rate;
 
     const annualHoursSaved = Math.round(hoursPerWeek * weeksPerYear * reductionRate);
     const annualCostSaved = Math.round(annualHoursSaved * hourlyRate);
@@ -70,33 +86,59 @@ export const ROICalculator: React.FC = () => {
       roiPercentage: Math.max(0, roiPercentage),
       paybackWeeks: Math.max(1, paybackWeeks)
     });
-  }, [hoursPerWeek, hourlyRate]);
+  }, [hoursPerWeek, hourlyRate, currency]);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="tactile-card p-6 md:p-10">
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-10 h-10 rounded-xl bg-[#10B981]/10 flex items-center justify-center">
-          <Calculator className="w-5 h-5 text-[#10B981]" />
+    <div className="bg-white border-2 border-[#E1E6EB] rounded-2xl p-5 md:p-6">
+      {/* Compact Header */}
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-[#2D4769] flex items-center justify-center">
+            <Calculator className="w-4 h-4 text-white" />
+          </div>
+          <div>
+            <h3 className="text-sm md:text-base font-black text-[#2D4769]">Calculate Your Savings</h3>
+          </div>
         </div>
-        <div>
-          <h3 className="text-lg md:text-xl font-black text-[#2D4769]">Calculate Your Savings</h3>
-          <p className="text-xs text-[#8EA3B5]">See what automation could save you</p>
+
+        {/* Currency Dropdown */}
+        <div className="relative">
+          <button
+            onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F0F2F5] rounded-lg text-xs font-bold text-[#557089] hover:bg-[#E1E6EB] transition-colors"
+          >
+            {currency.symbol} {currency.code}
+            <ChevronDown className="w-3 h-3" />
+          </button>
+          {showCurrencyDropdown && (
+            <div className="absolute right-0 top-full mt-1 bg-white border border-[#E1E6EB] rounded-lg shadow-xl z-20 min-w-[140px]">
+              {CURRENCIES.map((c) => (
+                <button
+                  key={c.code}
+                  onClick={() => { setCurrency(c); setShowCurrencyDropdown(false); }}
+                  className={`w-full text-left px-3 py-2 text-xs font-bold hover:bg-[#F0F2F5] transition-colors ${
+                    currency.code === c.code ? 'text-[#2D4769] bg-[#F0F2F5]' : 'text-[#557089]'
+                  }`}
+                >
+                  {c.symbol} {c.name}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Inputs */}
-        <div className="space-y-6">
-          {/* Hours per week slider */}
+      <div className="grid md:grid-cols-2 gap-5">
+        {/* Inputs - Compact */}
+        <div className="space-y-4">
           <div>
-            <label className="flex items-center justify-between mb-3">
-              <span className="text-sm font-bold text-[#557089]">Hours on repetitive tasks/week</span>
-              <span className="text-lg font-black text-[#2D4769]">{hoursPerWeek} hrs</span>
+            <label className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold text-[#557089]">Hours on repetitive tasks/week</span>
+              <span className="text-sm font-black text-[#2D4769]">{hoursPerWeek} hrs</span>
             </label>
             <input
               type="range"
@@ -104,93 +146,72 @@ export const ROICalculator: React.FC = () => {
               max="100"
               value={hoursPerWeek}
               onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-              className="w-full h-2 bg-[#E1E6EB] rounded-lg appearance-none cursor-pointer accent-[#2D4769]"
+              className="w-full h-1.5 bg-[#E1E6EB] rounded-lg appearance-none cursor-pointer accent-[#2D4769]"
             />
-            <div className="flex justify-between text-[10px] text-[#8EA3B5] mt-1">
-              <span>5 hrs</span>
-              <span>100 hrs</span>
-            </div>
           </div>
 
-          {/* Hourly rate slider */}
           <div>
-            <label className="flex items-center justify-between mb-3">
-              <span className="text-sm font-bold text-[#557089]">Average hourly cost</span>
-              <span className="text-lg font-black text-[#2D4769]">${hourlyRate}/hr</span>
+            <label className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold text-[#557089]">Average hourly cost</span>
+              <span className="text-sm font-black text-[#2D4769]">{currency.symbol}{hourlyRate}/hr</span>
             </label>
             <input
               type="range"
               min="10"
-              max="100"
+              max="200"
               value={hourlyRate}
               onChange={(e) => setHourlyRate(Number(e.target.value))}
-              className="w-full h-2 bg-[#E1E6EB] rounded-lg appearance-none cursor-pointer accent-[#2D4769]"
+              className="w-full h-1.5 bg-[#E1E6EB] rounded-lg appearance-none cursor-pointer accent-[#2D4769]"
             />
-            <div className="flex justify-between text-[10px] text-[#8EA3B5] mt-1">
-              <span>$10/hr</span>
-              <span>$100/hr</span>
-            </div>
           </div>
         </div>
 
-        {/* Results */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-gradient-to-br from-[#10B981]/5 to-[#2D4769]/5 rounded-2xl p-6 border-2 border-[#10B981]/20"
-        >
-          <div className="text-xs font-black uppercase tracking-widest text-[#10B981] mb-4">
-            Your Potential Savings
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            {/* Hours saved */}
-            <div className="bg-white rounded-xl p-4 border border-[#E1E6EB]">
-              <Clock className="w-4 h-4 text-[#8EA3B5] mb-2" />
-              <div className="text-2xl font-black text-[#2D4769]">
+        {/* Results - Compact */}
+        <div className="bg-[#F8F9FA] rounded-xl p-4 border border-[#E1E6EB]">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="text-center">
+              <Clock className="w-4 h-4 text-[#2D4769] mx-auto mb-1" />
+              <div className="text-lg font-black text-[#2D4769]">
                 <AnimatedNumber value={results.annualHoursSaved} suffix="+" />
               </div>
-              <div className="text-[10px] text-[#8EA3B5] font-bold uppercase">Hours/Year Saved</div>
+              <div className="text-[9px] text-[#8EA3B5] font-bold uppercase">Hours/Year</div>
             </div>
 
-            {/* Cost saved */}
-            <div className="bg-white rounded-xl p-4 border border-[#E1E6EB]">
-              <DollarSign className="w-4 h-4 text-[#10B981] mb-2" />
-              <div className="text-2xl font-black text-[#10B981]">
-                <AnimatedNumber value={results.annualCostSaved} prefix="$" />
+            <div className="text-center">
+              <DollarSign className="w-4 h-4 text-[#10B981] mx-auto mb-1" />
+              <div className="text-lg font-black text-[#10B981]">
+                <AnimatedNumber value={results.annualCostSaved} prefix={currency.symbol} />
               </div>
-              <div className="text-[10px] text-[#8EA3B5] font-bold uppercase">Annual Savings</div>
+              <div className="text-[9px] text-[#8EA3B5] font-bold uppercase">Annual Savings</div>
             </div>
 
-            {/* ROI */}
-            <div className="bg-white rounded-xl p-4 border border-[#E1E6EB]">
-              <TrendingUp className="w-4 h-4 text-[#8B5CF6] mb-2" />
-              <div className="text-2xl font-black text-[#8B5CF6]">
+            <div className="text-center">
+              <TrendingUp className="w-4 h-4 text-[#8B5CF6] mx-auto mb-1" />
+              <div className="text-lg font-black text-[#8B5CF6]">
                 <AnimatedNumber value={results.roiPercentage} suffix="%" />
               </div>
-              <div className="text-[10px] text-[#8EA3B5] font-bold uppercase">ROI First Year</div>
+              <div className="text-[9px] text-[#8EA3B5] font-bold uppercase">ROI</div>
             </div>
 
-            {/* Payback */}
-            <div className="bg-white rounded-xl p-4 border border-[#E1E6EB]">
-              <Zap className="w-4 h-4 text-[#F59E0B] mb-2" />
-              <div className="text-2xl font-black text-[#F59E0B]">
-                <AnimatedNumber value={results.paybackWeeks} suffix=" wks" />
+            <div className="text-center">
+              <Zap className="w-4 h-4 text-[#F59E0B] mx-auto mb-1" />
+              <div className="text-lg font-black text-[#F59E0B]">
+                <AnimatedNumber value={results.paybackWeeks} suffix="wk" />
               </div>
-              <div className="text-[10px] text-[#8EA3B5] font-bold uppercase">Payback Period</div>
+              <div className="text-[9px] text-[#8EA3B5] font-bold uppercase">Payback</div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
-      {/* CTA */}
-      <div className="mt-8 flex justify-center">
+      {/* CTA - Compact */}
+      <div className="mt-4 flex justify-end">
         <button
           onClick={scrollToContact}
-          className="flex items-center gap-3 px-8 py-4 bg-[#10B981] text-white font-black text-sm uppercase tracking-widest rounded-xl hover:bg-[#059669] transition-all shadow-lg shadow-[#10B981]/20 hover:-translate-y-0.5"
+          className="flex items-center gap-2 px-5 py-2.5 bg-[#2D4769] text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-[#1D2F45] transition-all"
         >
-          Get Your Custom Automation Plan
-          <ArrowRight className="w-4 h-4" />
+          Get Custom Plan
+          <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>

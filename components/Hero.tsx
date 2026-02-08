@@ -195,24 +195,30 @@ export const Hero: React.FC = () => {
             />
           </div>
 
-          {/* CTAs */}
+          {/* CTAs - Three buttons aligned with three cards */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-6 items-start sm:items-center pb-6 md:pb-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 pb-6 md:pb-10"
           >
             <button
               onClick={scrollToContact}
-              className="w-full sm:w-auto bg-[#2D4769] hover:bg-[#1D2F45] text-white px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-xs md:text-sm shadow-[0_20px_40px_-10px_rgba(45,71,105,0.4)] transition-all hover:-translate-y-1 active:scale-95"
+              className="bg-[#2D4769] hover:bg-[#1D2F45] text-white px-6 md:px-8 py-4 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.12em] md:tracking-[0.15em] text-xs shadow-[0_20px_40px_-10px_rgba(45,71,105,0.4)] transition-all hover:-translate-y-1 active:scale-95"
             >
               Get Started
             </button>
             <button
               onClick={scrollToServices}
-              className="w-full sm:w-auto bg-white hover:bg-[#F0F2F5] text-[#2D4769] px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-xs md:text-sm border-2 border-[#E1E6EB] hover:border-[#2D4769] transition-all"
+              className="bg-white hover:bg-[#F0F2F5] text-[#8B5CF6] px-6 md:px-8 py-4 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.12em] md:tracking-[0.15em] text-xs border-2 border-[#E1E6EB] hover:border-[#8B5CF6] transition-all"
             >
               Explore Services
+            </button>
+            <button
+              onClick={() => document.getElementById('playground')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white hover:bg-[#F0F2F5] text-[#10B981] px-6 md:px-8 py-4 rounded-xl md:rounded-2xl font-black uppercase tracking-[0.12em] md:tracking-[0.15em] text-xs border-2 border-[#E1E6EB] hover:border-[#10B981] transition-all"
+            >
+              Try Playground
             </button>
           </motion.div>
         </div>

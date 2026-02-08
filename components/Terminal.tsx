@@ -25,7 +25,7 @@ const COMMANDS: Record<string, () => TerminalLine[]> = {
     { type: 'sys', text: '│  book      → Schedule a strategy call           │' },
     { type: 'sys', text: '│  clear     → Clear terminal output              │' },
     { type: 'info', text: '├─────────────────────────────────────────────────┤' },
-    { type: 'success', text: '│  Or ask any question — AI-powered responses!   │' },
+    { type: 'success', text: '│  Or ask any question — instant answers          │' },
     { type: 'info', text: '└─────────────────────────────────────────────────┘' },
   ],
   status: () => [

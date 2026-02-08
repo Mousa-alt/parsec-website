@@ -174,70 +174,70 @@ export const MENA_SIGNALS = {
 // ============================================
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    client: 'Sigma Contractors',
+    client: 'Fit-Out Contractor',
     industry: 'Commercial Fit-out',
     result: 'Reduced bidding overhead by 80%',
     outcome: 'Implemented Contractor Dashboard to stabilize a E£1000M annual pipeline.',
     narrative: {
       nightmare: {
         title: "Drowning in Manual Data",
-        story: "Our ops manager was spending 40+ hours a week manually validating invoices and tracking project costs. Errors were costing us thousands and delays were eating into margins.",
+        story: "The ops manager was spending 40+ hours a week manually validating invoices and tracking project costs. Errors were costing thousands and delays were eating into margins.",
         painMetric: "40+ hours/week on spreadsheets"
       },
       magicMoment: {
         title: "The Day Everything Changed",
-        story: "The day we turned on the Payment Processor agent, it validated 200 invoices in 3 minutes. We couldn't believe it.",
+        story: "The day the Payment Processor agent was turned on, it validated 200 invoices in 3 minutes. The team couldn't believe it.",
         agentUsed: "Payment Processor Agent"
       },
       newReality: {
-        title: "Now We Focus on Growth",
-        story: "Our ops team now spends their time on strategic planning, not paperwork. We've scaled to handle 3x the project volume without adding headcount.",
+        title: "Now They Focus on Growth",
+        story: "The ops team now spends their time on strategic planning, not paperwork. They've scaled to handle 3x the project volume without adding headcount.",
         resultMetrics: ["90% time saved", "Zero overpayments", "E£1B pipeline"]
       }
     }
   },
   {
-    client: 'Prime Dental',
+    client: 'Dental Clinic',
     industry: 'Healthcare',
     result: '24/7 Call Resolution',
     outcome: 'Eliminated front-desk bottlenecks with autonomous voice agents.',
     narrative: {
       nightmare: {
         title: "Missed Calls, Lost Patients",
-        story: "Our front desk was overwhelmed. During peak hours, 40% of calls went unanswered. Every missed call was a potential patient walking to a competitor.",
+        story: "The front desk was overwhelmed. During peak hours, 40% of calls went unanswered. Every missed call was a potential patient walking to a competitor.",
         painMetric: "40% calls going unanswered"
       },
       magicMoment: {
         title: "The First 24/7 Night",
-        story: "The first night our Voice Agent went live, it booked 12 appointments while the clinic was closed. We woke up to a full schedule.",
+        story: "The first night the Voice Agent went live, it booked 12 appointments while the clinic was closed. They woke up to a full schedule.",
         agentUsed: "Voice Agent"
       },
       newReality: {
         title: "Never Miss a Patient Again",
-        story: "Now every call is answered instantly, in Arabic or English. Our receptionist focuses on in-clinic patient experience while the AI handles the phones.",
+        story: "Now every call is answered instantly, in Arabic or English. The receptionist focuses on in-clinic patient experience while the AI handles the phones.",
         resultMetrics: ["100% call coverage", "12+ after-hours bookings/week", "Zero hold time"]
       }
     }
   },
   {
-    client: 'Al-Faisal Real Estate',
+    client: 'Real Estate Agency',
     industry: 'Real Estate',
     result: '3x Lead Conversion',
     outcome: 'WhatsApp automation turned inquiries into viewings automatically.',
     narrative: {
       nightmare: {
         title: "Leads Slipping Through the Cracks",
-        story: "We were getting 100+ WhatsApp inquiries daily. By the time agents responded, most leads had gone cold or called a competitor.",
+        story: "They were getting 100+ WhatsApp inquiries daily. By the time agents responded, most leads had gone cold or called a competitor.",
         painMetric: "2-hour average response time"
       },
       magicMoment: {
         title: "Instant Response, Instant Results",
-        story: "Within a week of deploying the WhatsApp agent, our response time dropped to under 30 seconds. Leads were being qualified and scheduled for viewings automatically.",
+        story: "Within a week of deploying the WhatsApp agent, response time dropped to under 30 seconds. Leads were being qualified and scheduled for viewings automatically.",
         agentUsed: "WhatsApp Sales Agent"
       },
       newReality: {
         title: "Automated Lead Machine",
-        story: "Our agents now walk into pre-qualified viewings with all the client info ready. Conversion tripled because we're talking to the right people at the right time.",
+        story: "The sales team now walks into pre-qualified viewings with all the client info ready. Conversion tripled because they're talking to the right people at the right time.",
         resultMetrics: ["30-second response time", "3x conversion rate", "500+ viewings/month"]
       }
     }

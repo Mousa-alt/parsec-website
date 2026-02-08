@@ -5,26 +5,22 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { LiveMetrics } from './components/LiveMetrics';
 import { ROICalculator } from './components/ROICalculator';
-import { Comparison } from './components/Comparison';
 import { ServicesGrid } from './components/ServicesGrid';
 import { Playground } from './components/Playground';
 import { Terminal } from './components/Terminal';
 import { Metrics } from './components/Metrics';
 import { CaseStudies } from './components/CaseStudies';
-import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { Logo } from './components/Logo';
 import { TerminalProvider } from './TerminalContext';
-import { Home, Layers, Terminal as TermIcon, Award, MessageCircle, Calculator, ImageIcon } from 'lucide-react';
+import { Home, Layers, Award, MessageCircle, Calculator, Sparkles } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const navItems = [
     { icon: <Home className="w-4 h-4" />, href: '#home', label: 'Home' },
     { icon: <Calculator className="w-4 h-4" />, href: '#roi', label: 'Calculator' },
     { icon: <Layers className="w-4 h-4" />, href: '#services', label: 'Services' },
-    { icon: <ImageIcon className="w-4 h-4" />, href: '#playground', label: 'Try AI' },
-    { icon: <TermIcon className="w-4 h-4" />, href: '#demo', label: 'Console' },
+    { icon: <Sparkles className="w-4 h-4" />, href: '#playground', label: 'Playground' },
     { icon: <Award className="w-4 h-4" />, href: '#case-studies', label: 'Results' },
     { icon: <MessageCircle className="w-4 h-4" />, href: '#contact', label: 'Contact' },
   ];
@@ -51,7 +47,6 @@ const App: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-  // useLayoutEffect runs before browser paint - ensures scroll happens before render
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -69,102 +64,79 @@ const App: React.FC = () => {
           <Hero />
         </section>
 
-        <div className="h-12 md:h-24" />
+        <div className="h-8 md:h-16" />
 
-        {/* Live Metrics Counter */}
-        <section className="mb-16 md:mb-24">
+        {/* Live Metrics - Compact */}
+        <section className="mb-10 md:mb-16">
           <LiveMetrics />
         </section>
 
-        {/* ROI Calculator */}
-        <section id="roi" className="mb-20 md:mb-40">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
-          >
-            <div className="w-1.5 h-1.5 bg-[#10B981] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Calculate Your Savings</h2>
-            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">ROI Preview</span>
-          </motion.div>
+        {/* ROI Calculator - Compact */}
+        <section id="roi" className="mb-10 md:mb-16">
           <ROICalculator />
         </section>
 
-        {/* Visual Comparisons */}
-        <section className="mb-20 md:mb-40">
-          <Comparison />
-        </section>
-
-        <section id="services" className="mb-20 md:mb-40">
+        {/* Services */}
+        <section id="services" className="mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
+            className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Our Services</h2>
-            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">What We Do</span>
+            <h2 className="text-lg md:text-2xl font-black tracking-tight text-[#2D4769]">Our Services</h2>
           </motion.div>
           <ServicesGrid />
         </section>
 
-        {/* Playground Demo */}
-        <section id="playground" className="mb-20 md:mb-40">
+        {/* Playground - Contains Terminal + Image Analysis */}
+        <section id="playground" className="mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
+            className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#8B5CF6] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Try Our AI</h2>
-            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">Live Demo</span>
+            <h2 className="text-lg md:text-2xl font-black tracking-tight text-[#2D4769]">Playground</h2>
+            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5]">Interactive Demo</span>
           </motion.div>
-          <Playground />
+
+          <div className="space-y-6">
+            {/* Terminal at top of Playground */}
+            <Terminal />
+
+            {/* Image Analysis Demo */}
+            <Playground />
+          </div>
         </section>
 
-        <section id="demo" className="mb-20 md:mb-40">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
-          >
-            <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">System Console</h2>
-          </motion.div>
-          <Terminal />
-        </section>
-
-        <section className="mb-20 md:mb-40">
+        {/* Metrics - Compact */}
+        <section className="mb-10 md:mb-16">
           <Metrics />
         </section>
 
-        <section id="case-studies" className="mb-20 md:mb-40">
+        {/* Case Studies */}
+        <section id="case-studies" className="mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
+            className="flex items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Success Stories</h2>
-            <span className="text-[10px] md:text-xs font-mono text-[#8EA3B5] mt-1 md:mt-2">Real Results</span>
+            <h2 className="text-lg md:text-2xl font-black tracking-tight text-[#2D4769]">Success Stories</h2>
           </motion.div>
           <CaseStudies />
         </section>
 
-        {/* Testimonials section hidden for now
-        <section id="testimonials" className="mb-20 md:mb-40">
-          <Testimonials />
-        </section>
-        */}
-
-        <section id="contact" className="mb-20 md:mb-40">
+        {/* Contact */}
+        <section id="contact" className="mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 md:gap-4 mb-6 md:mb-10 group"
+            className="flex items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
-            <h2 className="text-xl md:text-3xl font-black tracking-tight text-[#2D4769]">Project Initialization</h2>
+            <h2 className="text-lg md:text-2xl font-black tracking-tight text-[#2D4769]">Get Started</h2>
           </motion.div>
           <Contact />
         </section>
@@ -176,13 +148,13 @@ const App: React.FC = () => {
       <div className="hidden md:block fixed bottom-10 right-10 z-50">
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="bg-white border border-[#E1E6EB] p-4 rounded-2xl shadow-2xl flex items-center gap-4"
+          className="bg-white border border-[#E1E6EB] p-3 rounded-xl shadow-xl flex items-center gap-3"
         >
-          <div className="w-10 h-10 rounded-full bg-[#2D4769] flex items-center justify-center text-white font-bold text-xs">
+          <div className="w-8 h-8 rounded-full bg-[#2D4769] flex items-center justify-center text-white font-bold text-[10px]">
             LIVE
           </div>
           <div>
-            <div className="text-[10px] font-black uppercase tracking-widest text-[#8EA3B5]">Status</div>
+            <div className="text-[9px] font-black uppercase tracking-widest text-[#8EA3B5]">Status</div>
             <div className="text-xs font-bold text-[#2D4769]">Operational</div>
           </div>
         </motion.div>

@@ -80,7 +80,7 @@ const ServiceCategoryCard: React.FC<{
     >
       {/* Large number watermark */}
       <div
-        className="absolute top-6 right-8 text-7xl md:text-8xl font-black opacity-[0.04] select-none pointer-events-none"
+        className="absolute top-6 right-24 text-7xl md:text-8xl font-black opacity-[0.04] select-none pointer-events-none"
         style={{ color: category.color }}
       >
         {number}
