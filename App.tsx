@@ -13,7 +13,8 @@ import { CaseStudies } from './components/CaseStudies';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { TerminalProvider } from './TerminalContext';
-import { Home, Layers, Award, MessageCircle, Calculator, Sparkles } from 'lucide-react';
+import { PlaygroundSection } from './components/playground/PlaygroundSection';
+import { Home, Layers, Award, MessageCircle, Calculator, Sparkles, FlaskConical } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const navItems = [
@@ -21,6 +22,7 @@ const Sidebar: React.FC = () => {
     { icon: <Calculator className="w-4 h-4" />, href: '#roi', label: 'Calculator' },
     { icon: <Layers className="w-4 h-4" />, href: '#services', label: 'Services' },
     { icon: <Sparkles className="w-4 h-4" />, href: '#playground', label: 'Playground' },
+    { icon: <FlaskConical className="w-4 h-4" />, href: '#lab', label: 'Lab' },
     { icon: <Award className="w-4 h-4" />, href: '#case-studies', label: 'Results' },
     { icon: <MessageCircle className="w-4 h-4" />, href: '#contact', label: 'Contact' },
   ];
@@ -108,6 +110,11 @@ const App: React.FC = () => {
             {/* Image Analysis Demo */}
             <Playground />
           </div>
+        </section>
+
+        {/* Premium Playground / Experiment Lab */}
+        <section id="lab" className="mb-10 md:mb-16">
+          <PlaygroundSection />
         </section>
 
         {/* Metrics - Compact */}
