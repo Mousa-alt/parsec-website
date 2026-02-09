@@ -62,6 +62,29 @@ npm run dev     # Start dev server (localhost:3000)
 npm run build   # Production build
 ```
 
+## Premium Playground Features (Experiment Lab)
+New interactive features added to demonstrate AI automation capabilities:
+
+### Components (components/playground/)
+- **AutomationQuiz**: Industry-specific branching quiz with scoring
+- **DocProcessorDemo**: Invoice/receipt data extraction demo
+- **WhatsAppWidget**: High-fidelity WhatsApp chat simulation
+- **AgentConfigurator**: Visual drag-and-drop agent builder
+- **WorkflowLibrary**: n8n template downloads with gating
+- **IntegrationShowcase**: Expandable integration grid
+- **TrustSignals**: Live activity ticker and metrics
+- **LanguageToggle**: Arabic/English language switcher
+
+### State Management
+- Zustand store: `store/playground-store.ts`
+- Quiz questions & data: `lib/playground-data.ts`
+
+### Features
+- Bilingual support (Arabic/English)
+- Industry-specific content (Real Estate, Healthcare, Construction, E-commerce)
+- WhatsApp-first lead capture (MENA market preference)
+- Persistent session state via localStorage
+
 ## Session Notes
 - User prefers autonomous work with minimal interruptions
 - Always test frontend and backend before confirming completion
