@@ -66,16 +66,16 @@ export const CaseStudies: React.FC = () => {
                   </div>
 
                   {/* The Nightmare */}
-                  <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 rounded-xl p-4 md:p-5">
+                  <div className="bg-gradient-to-r from-[#F59E0B]/5 to-[#F59E0B]/10 border border-[#F59E0B]/20 rounded-xl p-4 md:p-5">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center shrink-0">
-                        <AlertTriangle className="w-4 h-4 text-red-500" />
+                      <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/10 flex items-center justify-center shrink-0">
+                        <AlertTriangle className="w-4 h-4 text-[#F59E0B]" />
                       </div>
                       <div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-red-400 mb-1">The Nightmare</div>
+                        <div className="text-[10px] font-black uppercase tracking-widest text-[#F59E0B]/70 mb-1">The Nightmare</div>
                         <div className="text-sm font-bold text-[#2D4769] mb-2">{study.narrative.nightmare.title}</div>
                         <p className="text-sm text-[#557089] leading-relaxed">{study.narrative.nightmare.story}</p>
-                        <div className="mt-3 inline-block bg-red-100 text-red-600 text-[10px] font-bold px-2 py-1 rounded">
+                        <div className="mt-3 inline-block bg-[#F59E0B]/10 text-[#F59E0B] text-[10px] font-bold px-2 py-1 rounded">
                           {study.narrative.nightmare.painMetric}
                         </div>
                       </div>
@@ -88,16 +88,16 @@ export const CaseStudies: React.FC = () => {
                   </div>
 
                   {/* The Magic Moment */}
-                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-100 rounded-xl p-4 md:p-5">
+                  <div className="bg-gradient-to-r from-[#8B5CF6]/5 to-[#8B5CF6]/10 border border-[#8B5CF6]/20 rounded-xl p-4 md:p-5">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center shrink-0">
-                        <Sparkles className="w-4 h-4 text-purple-500" />
+                      <div className="w-8 h-8 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center shrink-0">
+                        <Sparkles className="w-4 h-4 text-[#8B5CF6]" />
                       </div>
                       <div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-purple-400 mb-1">The Magic Moment</div>
+                        <div className="text-[10px] font-black uppercase tracking-widest text-[#8B5CF6]/70 mb-1">The Magic Moment</div>
                         <div className="text-sm font-bold text-[#2D4769] mb-2">{study.narrative.magicMoment.title}</div>
                         <p className="text-sm text-[#557089] leading-relaxed italic">"{study.narrative.magicMoment.story}"</p>
-                        <div className="mt-3 inline-block bg-purple-100 text-purple-600 text-[10px] font-bold px-2 py-1 rounded">
+                        <div className="mt-3 inline-block bg-[#8B5CF6]/10 text-[#8B5CF6] text-[10px] font-bold px-2 py-1 rounded">
                           Powered by {study.narrative.magicMoment.agentUsed}
                         </div>
                       </div>
@@ -110,18 +110,18 @@ export const CaseStudies: React.FC = () => {
                   </div>
 
                   {/* The New Reality */}
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 rounded-xl p-4 md:p-5">
+                  <div className="bg-gradient-to-r from-[#10B981]/5 to-[#10B981]/10 border border-[#10B981]/20 rounded-xl p-4 md:p-5">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center shrink-0">
-                        <Rocket className="w-4 h-4 text-green-500" />
+                      <div className="w-8 h-8 rounded-lg bg-[#10B981]/10 flex items-center justify-center shrink-0">
+                        <Rocket className="w-4 h-4 text-[#10B981]" />
                       </div>
                       <div className="flex-1">
-                        <div className="text-[10px] font-black uppercase tracking-widest text-green-400 mb-1">The New Reality</div>
+                        <div className="text-[10px] font-black uppercase tracking-widest text-[#10B981]/70 mb-1">The New Reality</div>
                         <div className="text-sm font-bold text-[#2D4769] mb-2">{study.narrative.newReality.title}</div>
                         <p className="text-sm text-[#557089] leading-relaxed mb-3">{study.narrative.newReality.story}</p>
                         <div className="flex flex-wrap gap-2">
                           {study.narrative.newReality.resultMetrics.map((metric, idx) => (
-                            <div key={idx} className="flex items-center gap-1 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded">
+                            <div key={idx} className="flex items-center gap-1 bg-[#10B981]/10 text-[#10B981] text-[10px] font-bold px-2 py-1 rounded">
                               <Check className="w-3 h-3" />
                               {metric}
                             </div>

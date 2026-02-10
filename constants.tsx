@@ -16,6 +16,44 @@ export const BRANDING = {
 };
 
 // ============================================
+// DESIGN TOKENS - Consistent branding
+// ============================================
+export const DESIGN_TOKENS = {
+  colors: {
+    primary: '#2D4769',      // Navy - "AI That Works"
+    primaryDark: '#1D2F45',  // Dark Navy
+    purple: '#8B5CF6',       // "Brands That Pop"
+    purpleDark: '#7C3AED',
+    green: '#10B981',        // "Growth That Lasts"
+    greenDark: '#059669',
+    orange: '#F59E0B',       // Alerts/Highlights
+    muted: '#8EA3B5',        // Secondary text
+    light: '#C5D2E0',        // Light accents
+    bg: '#F0F2F5',           // Page background
+    border: '#E1E6EB',       // Borders
+    white: '#FFFFFF',
+    whatsapp: '#25D366',
+  },
+  card: {
+    base: 'bg-white rounded-2xl border-2 border-[#E1E6EB]',
+    hover: 'hover:border-[#2D4769] hover:shadow-lg transition-all',
+    shadow: 'shadow-lg shadow-black/5',
+  },
+  button: {
+    primary: 'bg-[#2D4769] hover:bg-[#1D2F45] text-white font-bold rounded-xl transition-all',
+    cta: 'bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold rounded-xl transition-all',
+    whatsapp: 'bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold rounded-xl transition-all',
+    outline: 'border-2 border-[#2D4769] text-[#2D4769] hover:bg-[#2D4769] hover:text-white font-bold rounded-xl transition-all',
+  },
+  text: {
+    heading: 'text-[#2D4769] font-black',
+    body: 'text-[#557089]',
+    muted: 'text-[#8EA3B5]',
+    label: 'text-[10px] font-bold uppercase tracking-wider text-[#8EA3B5]',
+  },
+};
+
+// ============================================
 // WHATSAPP - Contact configuration
 // ============================================
 export const WHATSAPP = {

@@ -236,9 +236,9 @@ export const Terminal: React.FC = () => {
   const getLineColor = (type: LineType) => {
     switch (type) {
       case 'user': return 'text-[#2D4769] font-black';
-      case 'alert': return 'text-amber-600 font-bold';
-      case 'success': return 'text-emerald-600 font-semibold';
-      case 'info': return 'text-sky-600 font-semibold';
+      case 'alert': return 'text-[#F59E0B] font-bold';
+      case 'success': return 'text-[#10B981] font-semibold';
+      case 'info': return 'text-[#8B5CF6] font-semibold';
       default: return 'text-[#787774]';
     }
   };
@@ -263,7 +263,7 @@ export const Terminal: React.FC = () => {
           ))}
         </div>
         <div className="flex gap-2 md:gap-4 pr-2 shrink-0">
-          <Shield className="w-3 h-3 text-emerald-500" />
+          <Shield className="w-3 h-3 text-[#10B981]" />
           <button
             onClick={() => handleQuickCommand('clear')}
             className="text-[#AEACA6] hover:text-[#37352F] transition-colors"
@@ -344,7 +344,7 @@ export const Terminal: React.FC = () => {
           <span>LAT: 12ms</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
           <span className="hidden sm:inline">PARSEC_NODE_CAIRO</span>
           <span className="sm:hidden">CAIRO</span>
         </div>

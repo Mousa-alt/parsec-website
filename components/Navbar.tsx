@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronRight, MessageSquare, MoreHorizontal, Lock, Unlock, Clock, ExternalLink, MessageCircle, Link2, Check } from 'lucide-react';
+import { ChevronRight, MessageSquare, MoreHorizontal, Lock, Unlock, Clock, ExternalLink, MessageCircle, Link2, Check, Sparkles } from 'lucide-react';
 import { BRANDING, WHATSAPP } from '../constants.tsx';
 import { Logo } from './Logo';
 
@@ -123,6 +123,14 @@ export const Navbar: React.FC = () => {
 
             {showMore && (
               <div className="absolute right-0 top-full mt-2 bg-white border border-[#E1E6EB] rounded-xl shadow-2xl shadow-black/10 py-2 min-w-[200px] z-50">
+                <button
+                  onClick={() => { document.getElementById('playground')?.scrollIntoView({ behavior: 'smooth' }); setShowMore(false); }}
+                  className="w-full px-4 py-2.5 text-left text-xs font-bold text-[#8B5CF6] hover:bg-[#8B5CF6]/5 transition-colors flex items-center gap-3"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Try Playground
+                </button>
+                <div className="border-t border-[#E1E6EB] my-1" />
                 <button
                   onClick={() => { handlePortfolio(); setShowMore(false); }}
                   className="w-full px-4 py-2.5 text-left text-xs font-bold text-[#2D4769] hover:bg-[#F0F2F5] transition-colors flex items-center gap-3"

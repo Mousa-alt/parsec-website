@@ -1,29 +1,68 @@
 
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, Component, ErrorInfo, ReactNode } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { LiveMetrics } from './components/LiveMetrics';
+import { SocialProofBar } from './components/SocialProofBar';
 import { ROICalculator } from './components/ROICalculator';
 import { ServicesGrid } from './components/ServicesGrid';
 import { Playground } from './components/Playground';
 import { Terminal } from './components/Terminal';
-import { Metrics } from './components/Metrics';
 import { CaseStudies } from './components/CaseStudies';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { TerminalProvider } from './TerminalContext';
 import { PlaygroundSection } from './components/playground/PlaygroundSection';
-import { Home, Layers, Award, MessageCircle, Calculator, Sparkles, FlaskConical } from 'lucide-react';
+import { SignatureProject } from './components/SignatureProject';
+import { Home, Layers, Award, MessageCircle, Zap, AlertTriangle } from 'lucide-react';
+
+// Error Boundary to catch rendering errors
+interface ErrorBoundaryProps {
+  children: ReactNode;
+  fallback?: ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error: Error | null;
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  declare props: ErrorBoundaryProps;
+  state: ErrorBoundaryState = { hasError: false, error: null };
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    console.error('ErrorBoundary caught:', error, errorInfo);
+  }
+
+  render(): ReactNode {
+    const { hasError, error } = this.state;
+    const { fallback, children } = this.props;
+
+    if (hasError) {
+      return fallback || (
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-center">
+          <AlertTriangle className="w-8 h-8 text-red-500 mx-auto mb-2" />
+          <h3 className="text-lg font-bold text-red-700 mb-1">Something went wrong</h3>
+          <p className="text-sm text-red-600">{error?.message}</p>
+        </div>
+      );
+    }
+    return children;
+  }
+}
 
 const Sidebar: React.FC = () => {
   const navItems = [
     { icon: <Home className="w-4 h-4" />, href: '#home', label: 'Home' },
-    { icon: <Calculator className="w-4 h-4" />, href: '#roi', label: 'Calculator' },
+    { icon: <Zap className="w-4 h-4" />, href: '#demo', label: 'Try It' },
     { icon: <Layers className="w-4 h-4" />, href: '#services', label: 'Services' },
-    { icon: <Sparkles className="w-4 h-4" />, href: '#playground', label: 'Playground' },
-    { icon: <FlaskConical className="w-4 h-4" />, href: '#lab', label: 'Lab' },
-    { icon: <Award className="w-4 h-4" />, href: '#case-studies', label: 'Results' },
+    { icon: <Award className="w-4 h-4" />, href: '#results', label: 'Results' },
     { icon: <MessageCircle className="w-4 h-4" />, href: '#contact', label: 'Contact' },
   ];
 
@@ -68,14 +107,19 @@ const App: React.FC = () => {
 
         <div className="h-8 md:h-16" />
 
-        {/* Live Metrics - Compact */}
+        {/* Social Proof Bar */}
         <section className="mb-10 md:mb-16">
-          <LiveMetrics />
+          <SocialProofBar />
         </section>
 
         {/* ROI Calculator - Compact */}
-        <section id="roi" className="mb-10 md:mb-16">
+        <section id="demo" className="mb-10 md:mb-16">
           <ROICalculator />
+        </section>
+
+        {/* Signature Project - Self-Updating Website */}
+        <section id="signature" className="mb-10 md:mb-16">
+          <SignatureProject />
         </section>
 
         {/* Services */}
@@ -114,16 +158,13 @@ const App: React.FC = () => {
 
         {/* Premium Playground / Experiment Lab */}
         <section id="lab" className="mb-10 md:mb-16">
-          <PlaygroundSection />
-        </section>
-
-        {/* Metrics - Compact */}
-        <section className="mb-10 md:mb-16">
-          <Metrics />
+          <ErrorBoundary>
+            <PlaygroundSection />
+          </ErrorBoundary>
         </section>
 
         {/* Case Studies */}
-        <section id="case-studies" className="mb-10 md:mb-16">
+        <section id="results" className="mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -151,21 +192,8 @@ const App: React.FC = () => {
         <Footer />
       </main>
 
-      {/* Floating Badge - hidden on mobile */}
-      <div className="hidden md:block fixed bottom-10 right-10 z-50">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="bg-white border border-[#E1E6EB] p-3 rounded-xl shadow-xl flex items-center gap-3"
-        >
-          <div className="w-8 h-8 rounded-full bg-[#2D4769] flex items-center justify-center text-white font-bold text-[10px]">
-            LIVE
-          </div>
-          <div>
-            <div className="text-[9px] font-black uppercase tracking-widest text-[#8EA3B5]">Status</div>
-            <div className="text-xs font-bold text-[#2D4769]">Operational</div>
-          </div>
-        </motion.div>
-      </div>
+      {/* Floating WhatsApp Button */}
+      <FloatingWhatsApp />
     </div>
     </TerminalProvider>
   );
