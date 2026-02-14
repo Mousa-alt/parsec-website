@@ -144,7 +144,7 @@ export const IntegrationShowcase: React.FC = () => {
       </div>
 
       {/* Integration Grid */}
-      <div className="space-y-4 max-h-[400px] overflow-y-auto pr-1">
+      <div className="space-y-3 md:space-y-4 max-h-[300px] md:max-h-[400px] overflow-y-auto pr-1">
         {groupedIntegrations.map(({ category, items }) => (
           <div key={category}>
             <div className="text-[10px] font-bold uppercase tracking-wider text-[#8EA3B5] mb-2">

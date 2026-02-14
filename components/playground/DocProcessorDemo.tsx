@@ -196,7 +196,7 @@ export const DocProcessorDemo: React.FC = () => {
         )}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
         {/* Upload Area / Preview */}
         <div
           onDrop={handleDrop}
@@ -205,7 +205,7 @@ export const DocProcessorDemo: React.FC = () => {
             setIsDragging(true);
           }}
           onDragLeave={() => setIsDragging(false)}
-          className={`relative border-2 border-dashed rounded-xl p-4 transition-all min-h-[200px] flex items-center justify-center ${
+          className={`relative border-2 border-dashed rounded-xl p-3 md:p-4 transition-all min-h-[160px] md:min-h-[200px] flex items-center justify-center ${
             isDragging
               ? 'border-[#10B981] bg-[#10B981]/5'
               : file
@@ -264,7 +264,7 @@ export const DocProcessorDemo: React.FC = () => {
         </div>
 
         {/* Results Area */}
-        <div className="bg-[#F8F9FA] rounded-xl p-4 min-h-[200px]">
+        <div className="bg-[#F8F9FA] rounded-xl p-3 md:p-4 min-h-[160px] md:min-h-[200px]">
           <AnimatePresence mode="wait">
             {error ? (
               <motion.div

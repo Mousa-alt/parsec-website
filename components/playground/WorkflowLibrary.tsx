@@ -116,12 +116,12 @@ export const WorkflowLibrary: React.FC = () => {
       </div>
 
       {/* Industry Filters */}
-      <div className="flex gap-2 mb-4 overflow-x-auto pb-2 -mx-1 px-1">
+      <div className="flex gap-1.5 md:gap-2 mb-4 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide">
         {industryFilters.map((filter) => (
           <button
             key={filter.id}
             onClick={() => setSelectedIndustry(filter.id)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold whitespace-nowrap transition-all ${
+            className={`flex items-center gap-1 md:gap-1.5 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-[9px] md:text-[10px] font-bold whitespace-nowrap transition-all flex-shrink-0 ${
               selectedIndustry === filter.id
                 ? 'bg-[#2D4769] text-white'
                 : 'bg-[#F0F2F5] text-[#557089] hover:bg-[#E1E6EB]'

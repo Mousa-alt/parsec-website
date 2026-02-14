@@ -167,22 +167,22 @@ export const AutomationQuiz: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
         {industryQuestions.map((ind) => (
           <motion.button
             key={ind.industry}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleSelectIndustry(ind.industry)}
-            className="p-4 md:p-6 rounded-xl border-2 border-[#E1E6EB] hover:border-[#8B5CF6] bg-white hover:bg-[#8B5CF6]/5 transition-all group text-left"
+            className="p-3 md:p-6 rounded-xl border-2 border-[#E1E6EB] hover:border-[#8B5CF6] bg-white hover:bg-[#8B5CF6]/5 transition-all group text-left"
           >
             <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-colors"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-2 md:mb-3 transition-colors"
               style={{ backgroundColor: `${ind.color}15`, color: ind.color }}
             >
               {industryIcons[ind.industry]}
             </div>
-            <div className="font-bold text-[#2D4769] text-sm md:text-base">
+            <div className="font-bold text-[#2D4769] text-xs md:text-base truncate">
               {isArabic ? ind.labelAr : ind.label}
             </div>
           </motion.button>

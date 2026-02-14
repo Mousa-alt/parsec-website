@@ -40,7 +40,7 @@ export const TrustSignals: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 md:space-y-4 overflow-hidden">
       {/* Trust Signal Ticker */}
       <div className="bg-gradient-to-r from-[#2D4769] to-[#1D2F45] rounded-xl p-4 overflow-hidden">
         <div className="flex items-center gap-3">
@@ -58,10 +58,10 @@ export const TrustSignals: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="absolute inset-0 flex items-center"
+              className="absolute inset-0 flex items-center overflow-hidden"
             >
               <Zap className="w-4 h-4 text-[#F59E0B] mr-2 flex-shrink-0" />
-              <span className="text-sm text-white font-medium" dir={isArabic ? 'rtl' : 'ltr'}>
+              <span className="text-xs md:text-sm text-white font-medium truncate" dir={isArabic ? 'rtl' : 'ltr'}>
                 {isArabic ? trustSignals[currentSignal].ar : trustSignals[currentSignal].en}
               </span>
             </motion.div>
@@ -82,24 +82,24 @@ export const TrustSignals: React.FC = () => {
       </div>
 
       {/* Live Metrics Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-white rounded-xl border border-[#E1E6EB] p-3"
+          className="bg-white rounded-xl border border-[#E1E6EB] p-2 md:p-3 overflow-hidden"
         >
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-6 h-6 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center">
-              <Zap className="w-3 h-3 text-[#8B5CF6]" />
+          <div className="flex items-center gap-1.5 md:gap-2 mb-1">
+            <div className="w-5 h-5 md:w-6 md:h-6 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center flex-shrink-0">
+              <Zap className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#8B5CF6]" />
             </div>
-            <span className="text-[9px] font-bold uppercase text-[#8EA3B5]">
-              {isArabic ? 'وكلاء نشطين' : 'Active Agents'}
+            <span className="text-[8px] md:text-[9px] font-bold uppercase text-[#8EA3B5] truncate">
+              {isArabic ? 'وكلاء نشطين' : 'Active'}
             </span>
           </div>
           <motion.div
             key={metrics.activeAgents}
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-black text-[#2D4769]"
+            className="text-lg md:text-xl font-black text-[#2D4769]"
           >
             {metrics.activeAgents}
           </motion.div>
@@ -107,21 +107,21 @@ export const TrustSignals: React.FC = () => {
 
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-white rounded-xl border border-[#E1E6EB] p-3"
+          className="bg-white rounded-xl border border-[#E1E6EB] p-2 md:p-3 overflow-hidden"
         >
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-6 h-6 rounded-lg bg-[#10B981]/10 flex items-center justify-center">
-              <TrendingUp className="w-3 h-3 text-[#10B981]" />
+          <div className="flex items-center gap-1.5 md:gap-2 mb-1">
+            <div className="w-5 h-5 md:w-6 md:h-6 rounded-lg bg-[#10B981]/10 flex items-center justify-center flex-shrink-0">
+              <TrendingUp className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#10B981]" />
             </div>
-            <span className="text-[9px] font-bold uppercase text-[#8EA3B5]">
-              {isArabic ? 'رسائل اليوم' : 'Messages Today'}
+            <span className="text-[8px] md:text-[9px] font-bold uppercase text-[#8EA3B5] truncate">
+              {isArabic ? 'رسائل' : 'Messages'}
             </span>
           </div>
           <motion.div
             key={metrics.messagesProcessed}
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-black text-[#2D4769]"
+            className="text-lg md:text-xl font-black text-[#2D4769]"
           >
             {formatNumber(metrics.messagesProcessed)}
           </motion.div>
@@ -129,21 +129,21 @@ export const TrustSignals: React.FC = () => {
 
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-white rounded-xl border border-[#E1E6EB] p-3"
+          className="bg-white rounded-xl border border-[#E1E6EB] p-2 md:p-3 overflow-hidden"
         >
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-6 h-6 rounded-lg bg-[#F59E0B]/10 flex items-center justify-center">
-              <CheckCircle className="w-3 h-3 text-[#F59E0B]" />
+          <div className="flex items-center gap-1.5 md:gap-2 mb-1">
+            <div className="w-5 h-5 md:w-6 md:h-6 rounded-lg bg-[#F59E0B]/10 flex items-center justify-center flex-shrink-0">
+              <CheckCircle className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#F59E0B]" />
             </div>
-            <span className="text-[9px] font-bold uppercase text-[#8EA3B5]">
-              {isArabic ? 'وقت التشغيل' : 'Uptime'}
+            <span className="text-[8px] md:text-[9px] font-bold uppercase text-[#8EA3B5] truncate">
+              {isArabic ? 'التشغيل' : 'Uptime'}
             </span>
           </div>
           <motion.div
             key={metrics.uptime}
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-black text-[#2D4769]"
+            className="text-lg md:text-xl font-black text-[#2D4769]"
           >
             {metrics.uptime}%
           </motion.div>
@@ -151,21 +151,21 @@ export const TrustSignals: React.FC = () => {
 
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-white rounded-xl border border-[#E1E6EB] p-3"
+          className="bg-white rounded-xl border border-[#E1E6EB] p-2 md:p-3 overflow-hidden"
         >
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-6 h-6 rounded-lg bg-[#2D4769]/10 flex items-center justify-center">
-              <Clock className="w-3 h-3 text-[#2D4769]" />
+          <div className="flex items-center gap-1.5 md:gap-2 mb-1">
+            <div className="w-5 h-5 md:w-6 md:h-6 rounded-lg bg-[#2D4769]/10 flex items-center justify-center flex-shrink-0">
+              <Clock className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#2D4769]" />
             </div>
-            <span className="text-[9px] font-bold uppercase text-[#8EA3B5]">
-              {isArabic ? 'متوسط الاستجابة' : 'Avg Response'}
+            <span className="text-[8px] md:text-[9px] font-bold uppercase text-[#8EA3B5] truncate">
+              {isArabic ? 'الاستجابة' : 'Response'}
             </span>
           </div>
           <motion.div
             key={metrics.avgResponseTime}
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-black text-[#2D4769]"
+            className="text-lg md:text-xl font-black text-[#2D4769]"
           >
             {metrics.avgResponseTime}ms
           </motion.div>

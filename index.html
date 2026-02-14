@@ -114,6 +114,22 @@
     ::-webkit-scrollbar-thumb:hover {
       background: var(--brand-muted);
     }
+
+    /* Hide scrollbar for horizontal scroll areas on mobile */
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Prevent horizontal overflow on mobile */
+    @media (max-width: 768px) {
+      .doc-container {
+        overflow-x: clip;
+      }
+    }
   </style>
 </head>
 <body class="bg-grid">

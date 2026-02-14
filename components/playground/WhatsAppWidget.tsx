@@ -247,23 +247,38 @@ export const WhatsAppWidget: React.FC = () => {
   // Display messages with typing effect
   useEffect(() => {
     setDisplayedMessages([]);
+    setIsTyping(false);
+
+    if (!currentFlow?.messages?.length) return;
+
     let index = 0;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    let isMounted = true;
 
     const showNextMessage = () => {
-      if (index < currentFlow.messages.length) {
-        setIsTyping(true);
-        setTimeout(() => {
-          setIsTyping(false);
-          setDisplayedMessages((prev) => [...prev, currentFlow.messages[index]]);
-          index++;
-          if (index < currentFlow.messages.length) {
-            setTimeout(showNextMessage, 500);
-          }
-        }, 1000);
-      }
+      if (!isMounted || index >= currentFlow.messages.length) return;
+
+      const message = currentFlow.messages[index];
+      if (!message) return;
+
+      setIsTyping(true);
+      timeoutId = setTimeout(() => {
+        if (!isMounted) return;
+        setIsTyping(false);
+        setDisplayedMessages((prev) => [...prev, message]);
+        index++;
+        if (index < currentFlow.messages.length) {
+          timeoutId = setTimeout(showNextMessage, 500);
+        }
+      }, 1000);
     };
 
     showNextMessage();
+
+    return () => {
+      isMounted = false;
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [currentFlow]);
 
   const handleOptionClick = (nextId: string) => {
@@ -318,7 +333,7 @@ export const WhatsAppWidget: React.FC = () => {
 
       {/* Chat Area */}
       <div
-        className="h-[280px] overflow-y-auto p-4 space-y-3"
+        className="h-[220px] md:h-[280px] overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E7EBE4' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           backgroundColor: '#ECE5DD',
@@ -333,14 +348,14 @@ export const WhatsAppWidget: React.FC = () => {
               className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] rounded-lg p-3 shadow-sm ${
+                className={`max-w-[85%] rounded-lg p-2 md:p-3 shadow-sm ${
                   message.sender === 'user'
                     ? 'bg-[#DCF8C6] rounded-br-none'
                     : 'bg-white rounded-bl-none'
                 }`}
               >
                 <p
-                  className="text-sm text-[#111B21] whitespace-pre-line"
+                  className="text-xs md:text-sm text-[#111B21] whitespace-pre-line"
                   dir={isArabic ? 'rtl' : 'ltr'}
                 >
                   {isArabic ? message.textAr : message.text}
@@ -381,16 +396,16 @@ export const WhatsAppWidget: React.FC = () => {
       </div>
 
       {/* Options / Input Area */}
-      <div className="p-3 bg-[#F0F2F5] border-t border-[#E1E6EB]">
+      <div className="p-2 md:p-3 bg-[#F0F2F5] border-t border-[#E1E6EB]">
         {currentFlow.userOptions ? (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 md:gap-2">
             {currentFlow.userOptions.map((option) => (
               <motion.button
                 key={option.nextId}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleOptionClick(option.nextId)}
-                className="px-3 py-2 bg-white border border-[#25D366] text-[#25D366] rounded-full text-xs font-medium hover:bg-[#25D366] hover:text-white transition-all"
+                className="px-2 md:px-3 py-1.5 md:py-2 bg-white border border-[#25D366] text-[#25D366] rounded-full text-[10px] md:text-xs font-medium hover:bg-[#25D366] hover:text-white transition-all"
               >
                 {isArabic ? option.textAr : option.text}
               </motion.button>
@@ -399,7 +414,7 @@ export const WhatsAppWidget: React.FC = () => {
         ) : (
           <button
             onClick={() => handleOptionClick('whatsapp')}
-            className="w-full px-4 py-3 bg-[#25D366] text-white rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#20BD5A] transition-all"
+            className="w-full px-3 md:px-4 py-2 md:py-3 bg-[#25D366] text-white rounded-lg font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-[#20BD5A] transition-all"
           >
             <MessageCircle className="w-4 h-4" />
             {isArabic ? 'متابعة على واتساب' : 'Continue on WhatsApp'}

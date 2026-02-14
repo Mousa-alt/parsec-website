@@ -113,19 +113,19 @@ export const AgentConfigurator: React.FC = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleIndustrySelect(industry.id)}
-            className={`p-3 rounded-xl border-2 transition-all text-left ${
+            className={`p-2 md:p-3 rounded-xl border-2 transition-all text-left ${
               configuratorState.selectedIndustry === industry.id
                 ? 'border-[#8B5CF6] bg-[#8B5CF6]/5'
                 : 'border-[#E1E6EB] hover:border-[#8B5CF6]/50'
             }`}
           >
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center mb-2"
+              className="w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center mb-1.5 md:mb-2"
               style={{ backgroundColor: `${industry.color}15`, color: industry.color }}
             >
-              {industry.icon}
+              {React.cloneElement(industry.icon as React.ReactElement, { className: 'w-4 h-4 md:w-5 md:h-5' })}
             </div>
-            <div className="text-xs font-bold text-[#2D4769]">
+            <div className="text-[10px] md:text-xs font-bold text-[#2D4769] truncate">
               {isArabic ? industry.labelAr : industry.label}
             </div>
           </motion.button>

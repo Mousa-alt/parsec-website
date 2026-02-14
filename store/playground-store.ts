@@ -194,13 +194,19 @@ export const usePlaygroundStore = create<PlaygroundState>()(
       setShowLeadCapture: (show) => set({ showLeadCapture: show }),
     }),
     {
-      name: 'parsec-playground',
+      name: 'parsec-playground-v2',
       partialize: (state) => ({
         quizResults: state.quizResults,
         configuratorState: state.configuratorState,
         userContact: state.userContact,
         language: state.language,
       }),
+      onRehydrateStorage: () => (state) => {
+        // Convert completedAt string back to Date object after rehydration
+        if (state?.quizResults?.completedAt) {
+          state.quizResults.completedAt = new Date(state.quizResults.completedAt);
+        }
+      },
     }
   )
 );

@@ -158,9 +158,8 @@ export const SignatureProject: React.FC = () => {
                         )}
                       </div>
                       <span
-                        className={`text-xs font-medium transition-colors ${
-                          isActive ? 'text-white' : isPast ? 'text-[#8EA3B5]' : 'text-[#557089]'
-                        }`}
+                        className={`text-xs font-medium transition-colors ${isActive ? 'text-white' : isPast ? 'text-[#8EA3B5]' : 'text-[#557089]'
+                          }`}
                       >
                         {stage.label}
                       </span>
@@ -231,9 +230,8 @@ export const SignatureProject: React.FC = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      className={`relative aspect-video rounded-lg overflow-hidden ${
-                        photo.hasLogo ? 'ring-2 ring-[#10B981]' : ''
-                      }`}
+                      className={`relative aspect-video rounded-lg overflow-hidden ${photo.hasLogo ? 'ring-2 ring-[#10B981]' : ''
+                        }`}
                     >
                       {/* Placeholder image with gradient */}
                       <div
@@ -285,12 +283,12 @@ export const SignatureProject: React.FC = () => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -top-4 -right-4 w-16 h-16 bg-[#8B5CF6]/20 rounded-full blur-xl"
+              className="absolute top-2 right-2 w-16 h-16 bg-[#8B5CF6]/20 rounded-full blur-xl"
             />
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -bottom-4 -left-4 w-20 h-20 bg-[#F59E0B]/20 rounded-full blur-xl"
+              className="absolute bottom-2 left-2 w-20 h-20 bg-[#F59E0B]/20 rounded-full blur-xl"
             />
           </motion.div>
         </div>
