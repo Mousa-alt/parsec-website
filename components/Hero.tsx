@@ -135,8 +135,8 @@ export const Hero: React.FC = () => {
         <div className="pt-8 md:pt-20">
           {/* Status Badge */}
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 md:mb-10"
           >
             <div className="px-3 md:px-5 py-1.5 md:py-2 rounded-full bg-[#2D4769] text-white text-[10px] md:text-xs font-black uppercase tracking-[0.15em] md:tracking-[0.25em] shadow-lg shadow-[#2D4769]/30">

@@ -30,8 +30,8 @@ export const PlaygroundSection: React.FC = () => {
       {/* Hero */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex items-center gap-3"
         >
@@ -51,8 +51,8 @@ export const PlaygroundSection: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <LanguageToggle />

@@ -148,8 +148,8 @@ const ServiceCategoryCard: React.FC<{
                 {category.items.map((item, idx) => (
                   <motion.div
                     key={item.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.05 }}
                     onClick={(e) => {
                       e.stopPropagation();

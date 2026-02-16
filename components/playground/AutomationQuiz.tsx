@@ -198,9 +198,9 @@ export const AutomationQuiz: React.FC = () => {
     return (
       <motion.div
         key={currentQuestion.id}
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -15 }}
         className="space-y-6"
       >
         <div className="mb-6">

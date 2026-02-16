@@ -7,18 +7,11 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <title>Parsec | Precision Engineering</title>
   <script>
-    // Prevent browser scroll restoration and always start at top
+    // Prevent browser scroll restoration - single clean scrollTo
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
-    // Also scroll after DOM is ready and after full load
-    document.addEventListener('DOMContentLoaded', function() {
-      window.scrollTo(0, 0);
-    });
-    window.addEventListener('load', function() {
-      setTimeout(function() { window.scrollTo(0, 0); }, 0);
-    });
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,6 +118,9 @@
     }
 
     /* Prevent horizontal overflow on mobile */
+    html, body {
+      overflow-x: hidden;
+    }
     @media (max-width: 768px) {
       .doc-container {
         overflow-x: clip;

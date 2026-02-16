@@ -72,7 +72,7 @@ export const SignatureProject: React.FC = () => {
       <div className="relative z-10 p-6 md:p-10">
         {/* Header Badge */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex items-center gap-2 mb-6"
@@ -90,8 +90,8 @@ export const SignatureProject: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left: Story */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
@@ -192,8 +192,8 @@ export const SignatureProject: React.FC = () => {
 
           {/* Right: Visual Demo */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="relative"

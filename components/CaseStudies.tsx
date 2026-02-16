@@ -16,8 +16,9 @@ export const CaseStudies: React.FC = () => {
       {CASE_STUDIES.map((study, index) => (
         <motion.div
           key={study.client}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
           className="tactile-card overflow-hidden"
         >

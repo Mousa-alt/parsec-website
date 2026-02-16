@@ -1,5 +1,5 @@
 
-import React, { useLayoutEffect, Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -88,10 +88,6 @@ const App: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <TerminalProvider>
     <div className="relative min-h-screen font-['Poppins']">
@@ -125,8 +121,9 @@ const App: React.FC = () => {
         {/* Services */}
         <section id="services" className="mb-10 md:mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
@@ -138,8 +135,9 @@ const App: React.FC = () => {
         {/* Playground - Contains Terminal + Image Analysis */}
         <section id="playground" className="mb-10 md:mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#8B5CF6] rounded-full group-hover:scale-150 transition-transform" />
@@ -166,8 +164,9 @@ const App: React.FC = () => {
         {/* Case Studies */}
         <section id="results" className="mb-10 md:mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="flex items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />
@@ -179,8 +178,9 @@ const App: React.FC = () => {
         {/* Contact */}
         <section id="contact" className="mb-10 md:mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="flex items-center gap-2 md:gap-4 mb-4 md:mb-6 group"
           >
             <div className="w-1.5 h-1.5 bg-[#2D4769] rounded-full group-hover:scale-150 transition-transform" />

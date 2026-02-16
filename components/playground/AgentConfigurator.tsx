@@ -92,9 +92,9 @@ export const AgentConfigurator: React.FC = () => {
 
   const renderStep1 = () => (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
       className="space-y-4"
     >
       <div className="text-center mb-4">
@@ -136,9 +136,9 @@ export const AgentConfigurator: React.FC = () => {
 
   const renderStep2 = () => (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
       className="space-y-4"
     >
       <div className="text-center mb-4">
@@ -205,9 +205,9 @@ export const AgentConfigurator: React.FC = () => {
 
   const renderStep3 = () => (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
       className="space-y-4"
     >
       <div className="text-center mb-4">
